@@ -4,3 +4,4 @@ data-raw
 .Rhistory
 .Rprofile
 renv/
+renv.lock
