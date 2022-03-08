@@ -2,11 +2,13 @@
 title: "OCA Data Sharing Practical: Data dictionaries"
 author: "Patrick Barks"
 date: "Generated `r format(Sys.time(), format = '%Y-%m-%d')`"
-output:
-  html_document:
-    toc: false
-    theme: united
-    highlight: tango
+output: 
+  rmdformats::robobook:
+    self_contained: true
+    thumbnails: false
+    lightbox: true
+    gallery: false
+    use_bookdown: true
 editor_options: 
   chunk_output_type: console
 always_allow_html: true
@@ -16,21 +18,14 @@ always_allow_html: true
 knitr::opts_chunk$set()
 ```
 
-## Contents
-- [Objectives](#objectives)
-- [Background](#background)
-- [Dictionary format](#format)
-- [The `datadict` package](#datadict)
-- [Excercises](#exercises)
-
-## <a name="objectives"></a>Objectives
+# Objectives
 
 Learn to:
 
 - prepare an OCA-style data dictionary, starting from either a raw dataset or a ODK/Kobo dictionary
 - compare datasets and corresponding data dictionaries to ensure completeness and validity
 
-## <a name="objectives"></a>Background
+# Background
 
 Documenting the variables in a dataset is a crucial part of data management and
 ensures that a dataset is interpretable by researchers who were not directly
@@ -45,7 +40,7 @@ specialized data dictionary format. To facilitate dataset and data dictionary
 validation, the OCA Data Sharing Platform uses its own standardized dictionary
 format, defined in the next section.
 
-## <a name="format"></a>Dictionary format
+# Dictionary format
 
 Every dataset shared or archived on the OCA platform must have an accompanying
 data dictionary that includes, at a minimum, the fields described below. Each
@@ -60,7 +55,7 @@ of the required fields.
 | type           | Variable type (options: "Numeric", "Date", "Time", "Datetime", "Coded list", or "Free text") | "Coded list" |
 | choices        | The list of options (pairs of codes and labels) corresponding to a variable of type "Coded list". | "1, Blood \| 2, Nasal swab \| 3, Throat swab \| 4, Other" |
 
-## <a name="datadict"></a>The `datadict` package
+# The `datadict` package
 
 The R package [`datadict`](https://github.com/epicentre-msf/datadict) contains a
 variety of functions to aid in the preparation of an OCA-style data dictionary:
@@ -75,7 +70,7 @@ Note that dictionary templates produces by the `dict_from_` functions may still
 require further processing by the user (e.g. with additional R scripts, or by
 hand in Excel).
 
-## <a name="exercises"></a>Exercises
+# Exercises
 
 This repository includes an example dataset based on a mortality survey. Load
 the dataset and corresponding ODK data dictionary using the example code below,
@@ -95,7 +90,7 @@ odk_survey <- rio::import(here("data/mortality_survey_simple_kobo.xlsx"), sheet 
 odk_choices <- rio::import(here("data/mortality_survey_simple_kobo.xlsx"), sheet = "options", setclass = "tbl")
 ```
 
-#### Exercise 1:
+## Exercise 1
 
 With the `datadict` package we can prepare a dictionary template *either* from
 the raw dataset (using `dict_from_data()`) or from the ODK dictionary (using
@@ -103,7 +98,7 @@ the raw dataset (using `dict_from_data()`) or from the ODK dictionary (using
 dictionary templates. What are some differences? Can you guess why these
 differences are occurring?
 
-#### Exercise 2:
+## Exercise 2
 
 When producing a dictionary template using `dict_from_data()`, the variable type
 is determined by the class of the original column (e.g. character, numeric,
@@ -115,7 +110,7 @@ transform the columns of `dat` using functions like `as.numeric()` or
 `dict_from_data()`. What are the differences that remain between this dictionary
 template and the template derived from the ODK dictionary?
 
-#### Exercise 3:
+## Exercise 3
 
 Examine the options for the 'Coded list' type variables in the dictionary
 produced in exercise 2, and compare these to the corresponding options produced
@@ -126,13 +121,13 @@ data sharing?
 Hint: check out the function `datadict::coded_options()` to extract a long-form
 table of Coded list variables and corresponding options from a dictionary.
 
-#### Exercise 4:
+## Exercise 4
 
 Use the function `valid_dict()` to check that the dictionary you produced in
 Exercise 2 complies with the OCA standard. Assuming it does, edit the dictionary
 so that it fails at least two of the checks implemented by `valid_dict()`.
 
-#### Exercise 5:
+## Exercise 5
 
 Use the function `valid_data()` to check for consistency between the dataset and
 dictionary produced in Exercise 2. Assuming all checks pass, edit the dataset so
