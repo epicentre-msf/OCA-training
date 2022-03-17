@@ -19,9 +19,11 @@ update_relevant <- function(x, swap) {
 
 
 ## recreate mortality survey data and kobo dict, but with shorter variable names
-dict_survey <- readxl::read_xls("data-raw/KoboMortalitySurvey.xls", sheet = 1)
-dict_choices <- readxl::read_xls("data-raw/KoboMortalitySurvey.xls", sheet = 2)
-dict_settings <- readxl::read_xls("data-raw/KoboMortalitySurvey.xls", sheet = 3)
+readxl::excel_sheets("data-raw/KoboMortalitySurvey.xls")
+
+dict_survey <- readxl::read_xls("data-raw/KoboMortalitySurvey.xls", sheet = "survey")
+dict_choices <- readxl::read_xls("data-raw/KoboMortalitySurvey.xls", sheet = "choices")
+dict_settings <- readxl::read_xls("data-raw/KoboMortalitySurvey.xls", sheet = "settings")
 
 names_shorten <- setNames(
   dict_survey$name[!is.na(dict_survey$name)],
@@ -57,9 +59,9 @@ rm(dict_survey, dict_choices, dat_hh, dat_mb)
 ## create a simpler version of mortality survey dataset by merging a few cols of
 # household-level data with member-level data
 
-dict_survey <- readxl::read_xlsx("data/mortality_survey_kobo.xlsx", sheet = 1)
-dict_choices <- readxl::read_xlsx("data/mortality_survey_kobo.xlsx", sheet = 2)
-dict_settings <- readxl::read_xlsx("data/mortality_survey_kobo.xlsx", sheet = 3)
+dict_survey <- readxl::read_xlsx("data/mortality_survey_kobo.xlsx", sheet = "survey")
+dict_choices <- readxl::read_xlsx("data/mortality_survey_kobo.xlsx", sheet = "choices")
+dict_settings <- readxl::read_xlsx("data/mortality_survey_kobo.xlsx", sheet = "settings")
 
 dat_hh <- readxl::read_xlsx("data/mortality_survey_data.xlsx", sheet = 1)
 dat_mb <- readxl::read_xlsx("data/mortality_survey_data.xlsx", sheet = 2)
@@ -120,7 +122,7 @@ dict_survey_simple <- dict_survey_simple_prep %>%
   select(-list_name)
 
 qxl::qxl(
-  list(survey = dict_survey_simple, options = dict_choices_simple, settings = dict_settings),
+  list(survey = dict_survey_simple, choices = dict_choices_simple, settings = dict_settings),
   "data/mortality_survey_simple_kobo.xlsx"
 )
 

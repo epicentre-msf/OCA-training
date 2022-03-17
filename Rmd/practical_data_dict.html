@@ -204,7 +204,7 @@
         <ul class="authors">
           <li class="divider"></li>
                                 <li><span><i class="glyphicon glyphicon-user"></i> Patrick Barks</span></li>
-                                         <li><span><i class="glyphicon glyphicon-calendar"></i> Generated 2022-03-08</span></li>
+                                         <li><span><i class="glyphicon glyphicon-calendar"></i> Generated 2022-03-17</span></li>
                   </ul>     
       </div>
       <div class="book-body fixed">
@@ -325,7 +325,7 @@ package where possible.</p>
 <span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="co"># import ODK dictionary (note the main dictionary and multiple-choice options are in separate sheets)</span></span>
 <span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>odk_survey <span class="ot">&lt;-</span> rio<span class="sc">::</span><span class="fu">import</span>(<span class="fu">here</span>(<span class="st">&quot;data/mortality_survey_simple_kobo.xlsx&quot;</span>), <span class="at">sheet =</span> <span class="st">&quot;survey&quot;</span>, <span class="at">setclass =</span> <span class="st">&quot;tbl&quot;</span>)</span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>odk_choices <span class="ot">&lt;-</span> rio<span class="sc">::</span><span class="fu">import</span>(<span class="fu">here</span>(<span class="st">&quot;data/mortality_survey_simple_kobo.xlsx&quot;</span>), <span class="at">sheet =</span> <span class="st">&quot;options&quot;</span>, <span class="at">setclass =</span> <span class="st">&quot;tbl&quot;</span>)</span></code></pre></div>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>odk_choices <span class="ot">&lt;-</span> rio<span class="sc">::</span><span class="fu">import</span>(<span class="fu">here</span>(<span class="st">&quot;data/mortality_survey_simple_kobo.xlsx&quot;</span>), <span class="at">sheet =</span> <span class="st">&quot;choices&quot;</span>, <span class="at">setclass =</span> <span class="st">&quot;tbl&quot;</span>)</span></code></pre></div>
 <div id="exercise-1" class="section level2" number="5.1">
 <h2><span class="header-section-number">5.1</span> Exercise 1</h2>
 <p>With the <code>datadict</code> package we can prepare a dictionary template <em>either</em> from

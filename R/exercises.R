@@ -11,7 +11,7 @@ dat <- rio::import("data/mortality_survey_simple_data.xlsx", setclass = "tbl")
 
 # import ODK dictionary (note the main dictionary and multiple-choice options are in separate sheets)
 odk_survey <- rio::import("data/mortality_survey_simple_kobo.xlsx", sheet = "survey", setclass = "tbl")
-odk_choices <- rio::import("data/mortality_survey_simple_kobo.xlsx", sheet = "options", setclass = "tbl")
+odk_choices <- rio::import("data/mortality_survey_simple_kobo.xlsx", sheet = "choices", setclass = "tbl")
 
 
 ## Exercise 1
