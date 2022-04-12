@@ -1,17 +1,18 @@
 
 library(tidyverse)
 library(rio)
+library(here)
 library(datadict)
 
 
 ## Load data
 
 # import dataset
-dat <- rio::import("data/mortality_survey_simple_data.xlsx", setclass = "tbl")
+dat <- rio::import(here::here("data/mortality_survey_simple_data.xlsx"), setclass = "tbl")
 
 # import ODK dictionary (note the main dictionary and multiple-choice options are in separate sheets)
-odk_survey <- rio::import("data/mortality_survey_simple_kobo.xlsx", sheet = "survey", setclass = "tbl")
-odk_choices <- rio::import("data/mortality_survey_simple_kobo.xlsx", sheet = "choices", setclass = "tbl")
+odk_survey <- rio::import(here::here("data/mortality_survey_simple_kobo.xlsx"), sheet = "survey", setclass = "tbl")
+odk_choices <- rio::import(here::here("data/mortality_survey_simple_kobo.xlsx"), sheet = "choices", setclass = "tbl")
 
 
 ## Exercise 1
@@ -52,4 +53,15 @@ dat_nonvalid$age_years[5] <- "5yrs"  # non-valid value of numeric variable
 
 datadict::valid_data(dat_nonvalid, dict_dat_reclass)
 
+
+## Pseudonymization ------------------------------------------------------------
+
+library(tidyverse)
+library(rio)
+library(here)
+library(datadict)
+
+
+dat <- rio::import(here::here("data/mortality_survey_simple_data.xlsx"), setclass = "tbl")
+dict <- rio::import(here::here("data/mortality_survey_simple_dict_pre_pseudonym.xlsx"), setclass = "tbl")
 

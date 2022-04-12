@@ -2,6 +2,7 @@
 
 library(tidyverse)
 library(readxl)
+library(here)
 library(qxl)
 
 update_relevant <- function(x, swap) {
@@ -19,11 +20,11 @@ update_relevant <- function(x, swap) {
 
 
 ## recreate mortality survey data and kobo dict, but with shorter variable names
-readxl::excel_sheets("data-raw/KoboMortalitySurvey.xls")
+readxl::excel_sheets(here::here("data-raw/KoboMortalitySurvey.xls"))
 
-dict_survey <- readxl::read_xls("data-raw/KoboMortalitySurvey.xls", sheet = "survey")
-dict_choices <- readxl::read_xls("data-raw/KoboMortalitySurvey.xls", sheet = "choices")
-dict_settings <- readxl::read_xls("data-raw/KoboMortalitySurvey.xls", sheet = "settings")
+dict_survey <- readxl::read_xls(here::here("data-raw/KoboMortalitySurvey.xls"), sheet = "survey")
+dict_choices <- readxl::read_xls(here::here("data-raw/KoboMortalitySurvey.xls"), sheet = "choices")
+dict_settings <- readxl::read_xls(here::here("data-raw/KoboMortalitySurvey.xls"), sheet = "settings")
 
 names_shorten <- setNames(
   dict_survey$name[!is.na(dict_survey$name)],
@@ -35,20 +36,20 @@ dict_survey_out <- dict_survey %>%
   rename(name = name_short) %>% 
   mutate(relevant = map_chr(relevant, update_relevant, swap = names_shorten))
 
-dat_hh <- readxl::read_xlsx("data-raw/MortalitySurveyData.xlsx", sheet = 1)
-dat_mb <- readxl::read_xlsx("data-raw/MortalitySurveyData.xlsx", sheet = 2)
+dat_hh <- readxl::read_xlsx(here::here("data-raw/MortalitySurveyData.xlsx"), sheet = 1)
+dat_mb <- readxl::read_xlsx(here::here("data-raw/MortalitySurveyData.xlsx"), sheet = 2)
 
 dat_hh_short <- dat_hh %>% rename(!!!any_of(names_shorten))
 dat_mb_short <- dat_mb %>% rename(!!!any_of(names_shorten))
 
 qxl::qxl(
   list(`Mortality Survey` = dat_hh_short, hh_member = dat_mb_short),
-  file = "data/mortality_survey_data.xlsx"
+  file = here::here("data/mortality_survey_data.xlsx")
 )
 
 qxl::qxl(
   list(survey = dict_survey_out, choices = dict_choices, settings = dict_settings),
-  file = "data/mortality_survey_kobo.xlsx"
+  file = here::here("data/mortality_survey_kobo.xlsx")
 )
 
 rm(dict_survey, dict_choices, dat_hh, dat_mb)
@@ -59,12 +60,12 @@ rm(dict_survey, dict_choices, dat_hh, dat_mb)
 ## create a simpler version of mortality survey dataset by merging a few cols of
 # household-level data with member-level data
 
-dict_survey <- readxl::read_xlsx("data/mortality_survey_kobo.xlsx", sheet = "survey")
-dict_choices <- readxl::read_xlsx("data/mortality_survey_kobo.xlsx", sheet = "choices")
-dict_settings <- readxl::read_xlsx("data/mortality_survey_kobo.xlsx", sheet = "settings")
+dict_survey <- readxl::read_xlsx(here::here("data/mortality_survey_kobo.xlsx"), sheet = "survey")
+dict_choices <- readxl::read_xlsx(here::here("data/mortality_survey_kobo.xlsx"), sheet = "choices")
+dict_settings <- readxl::read_xlsx(here::here("data/mortality_survey_kobo.xlsx"), sheet = "settings")
 
-dat_hh <- readxl::read_xlsx("data/mortality_survey_data.xlsx", sheet = 1)
-dat_mb <- readxl::read_xlsx("data/mortality_survey_data.xlsx", sheet = 2)
+dat_hh <- readxl::read_xlsx(here::here("data/mortality_survey_data.xlsx"), sheet = 1)
+dat_mb <- readxl::read_xlsx(here::here("data/mortality_survey_data.xlsx"), sheet = 2)
 
 dat_simple_prep <- dat_mb %>% 
   select(
@@ -123,6 +124,34 @@ dict_survey_simple <- dict_survey_simple_prep %>%
 
 qxl::qxl(
   list(survey = dict_survey_simple, choices = dict_choices_simple, settings = dict_settings),
-  "data/mortality_survey_simple_kobo.xlsx"
+  here::here("data/mortality_survey_simple_kobo.xlsx")
+)
+
+
+
+## Prepare dictionary for pseudonymization step
+
+# import dataset
+dat <- rio::import(here::here("data/mortality_survey_simple_data.xlsx"), setclass = "tbl")
+
+# import ODK dictionary (note the main dictionary and multiple-choice options are in separate sheets)
+odk_survey <- rio::import(here::here("data/mortality_survey_simple_kobo.xlsx"), sheet = "survey", setclass = "tbl")
+odk_choices <- rio::import(here::here("data/mortality_survey_simple_kobo.xlsx"), sheet = "choices", setclass = "tbl")
+
+dict_odk <- datadict::dict_from_odk(odk_survey, odk_choices) %>% 
+  add_row(
+    variable_name = "id",
+    short_label = "Participant ID",
+    type = "Free text",
+    origin = "original",
+    status = "share",
+    .before = 1
+  )
+
+datadict::valid_data(dat, dict_odk)
+
+qxl::qxl(
+  dict_odk,
+  here::here("data/mortality_survey_simple_dict_pre_pseudonym.xlsx")
 )
 
