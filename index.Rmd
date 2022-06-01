@@ -1,0 +1,21 @@
+--- 
+title: "OCA Data Sharing Practicals"
+site: bookdown::bookdown_site
+output: bookdown::gitbook
+documentclass: book
+bibliography: [book.bib, packages.bib]
+biblio-style: apalike
+link-citations: yes
+github-repo: epicentre-msf/OCA-training
+description: "OCA Data Sharing Practicals: Data dictionaries and pseudonymization"
+---
+
+# Introduction
+
+This repository contains two training documents for the OCA Data Sharing Platform:
+
+- [Chapter 2: Data dictionaries](#data-dict) covers the production of data dictionaries
+to accompany datasets that will be shared
+
+- [Chapter 3: Pseudonymization](#pseudonym) covers techniques for assessing and limiting disclosure risk
+when preparing datasets to be share

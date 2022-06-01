@@ -1,0 +1,118 @@
+
+# Pseudonymization {#pseudonym}
+
+## Objectives
+
+Learn to:
+
+- assess the variables in a dataset for disclosure risk and utility
+- implement pseudonymization procedures, where necessary, to limit disclosure
+risk
+- ensure that a final dataset meets all data-sharing requirements
+
+## Background
+
+### Disclosure
+
+When a person or organization recognizes or learns something that they did not
+already know about another identifiable person or organization through released
+data. This might occur through:
+
+- spontaneous recognition (i.e. someone with knowledge of the sampled population
+recognizes a unique or particular combination of data values)
+- record matching/linkage with other existing datasets (e.g. population
+registers, electoral rolls, data from specialized firms)
+
+### Identifiers
+
+**Direct identifiers:** variables that unambiguously reveal a person’s identity
+(e.g. name, passport number, phone number, physicial address, email address)
+
+**Indirect identifiers:** variables that contain information that, when combined
+with other variables, could lead to re-identification (e.g. sex, age, marital
+status, occupation). Note potential for elevated identifiability risk from
+extreme values of continuous variables (height, income, number of children, land
+area).
+
+### *k*-anonymity
+
+A measure of re-identification risk for discrete variables. *k* = the number of
+records in a dataset containing a certain combination of indirect identifiers
+(e.g. how many records with `sex` = "male" and `age_group` = "40-49 years" ?)
+Higher value of *k* means lower re-identification risk, because higher *k* means
+more records in the dataset with the same combination of indirect identifiers.
+
+### Pseudonymization
+
+Methods used to transform a dataset to achieve an “acceptable level” of
+re-identification / disclosure risk. Two types of methods:
+
+**Non-perturbative:** suppression (remove entire variables, or specific records
+or values) or aggregation (aggregate levels of a variable to reduce uniqueness)
+
+**Perturbative:** shuffle values or add noise to a variable while preserving
+desired statistical properties
+
+## Typical workflow
+
+1. Select a threshold value of *k*-anonymity that will be the minimum
+acceptable value for combinations of indirect identifiers within the released
+dataset (e.g. *k* = 5)
+2. Assess re-identification risk of each variable (e.g. direct identifier,
+indirect identifier, non-identifying)
+3. Assess utility of each variable for analysis (e.g. high, low, uncertain).
+4. Withhold variables classified as direct identifiers (e.g. name, phone number,
+address). Consider withholding other variables with low utility and non-zero
+re-identification risk.
+5. Merge groups of related indirect identifiers, where possible. E.g. If dataset
+contains two age-related variables `age_in_years` and `age_in_months`, merge
+these two variables into a new derived variable `age`, and withhold the original
+variables.
+6. Review all unique values of 'free-text' type variables to ensure they do not
+contain identifying details. Aggregate or withhold as necessary.
+7. Discretise any indirect identifiers that are continuous variables (e.g.
+height in cm -> discrete height categories)
+8. Assess re-identification risk criterion (i.e. *k*-anonymity) using all
+indirect identifiers
+9. Pseudonymize indirect identifiers to limit re-identification risk (e.g.
+aggregate, withhold)
+10. Repeat steps 8 and 9 until the given risk criterion is met
+11. Ensure that the final pseudonymized dataset and dictionary meet all
+data-sharing requirements
+
+## Exercise
+
+This repository includes an example dataset based on a mortality survey. Load
+the dataset and pre-prepared data dictionary using the example code below, and
+use them to work through the pseudonymization workflow described above.
+
+```{r, message=FALSE}
+library(rio)
+library(datadict)
+library(here)
+
+# import dataset and prepared data dictionary
+dat <- rio::import(here("data/mortality_survey_simple_data.xlsx"), setclass = "tbl")
+dict <- rio::import(here("data/mortality_survey_simple_dict_pre_pseudonym.xlsx"), setclass = "tbl")
+```
+
+As you make your way through the pseudonymization workflow, answer the following
+questions:
+
+**(1) Which variables, if any, did you assess as either direct or indirect
+identifiers?**
+
+**(2) Despite not being completely familiar with the original study, were you
+able to assess any variables as being of low utility for analysis? If so, what
+actions did you**
+
+**(3) Did you find any groups of related variables that you decided to merge
+into a new derived variable?**
+
+**(4) In your assessment of free-text variables, did you notice any values that
+were potentially identifying? If so, what actions did you take?**
+
+**(5) In your initial application of Step 6 of the pseudonymization work flow,
+were there any combinations of indirect identifiers yielding values of *k* below
+your pre-selected threshold? If so, what action did you take?**
+

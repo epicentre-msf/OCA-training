@@ -1,0 +1,17 @@
+bookdown::gitbook:
+  css: style.css
+  repo:
+    base: https://github.com/hadley/ggplot2-book
+    branch: main
+  config:
+    toc:
+      before: |
+        <li><a href="./">OCA Data Sharing Practicals</a></li>
+    download: ["pdf", "epub"]
+bookdown::pdf_book:
+  includes:
+    in_header: preamble.tex
+  latex_engine: xelatex
+  citation_package: natbib
+  keep_tex: yes
+bookdown::epub_book: default
