@@ -63,7 +63,6 @@ package where possible.
 ```{r, message=FALSE}
 library(rio)
 library(here)
-library(datadict)
 
 # import dataset
 dat <- rio::import(here("data/mortality_survey_simple_data.xlsx"), setclass = "tbl")

@@ -89,7 +89,6 @@ use them to work through the pseudonymization workflow described above.
 ```{r, message=FALSE}
 library(rio)
 library(here)
-library(datadict)
 
 # import dataset and prepared data dictionary
 dat <- rio::import(here("data/mortality_survey_simple_data.xlsx"), setclass = "tbl")

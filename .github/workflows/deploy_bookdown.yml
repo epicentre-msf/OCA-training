@@ -17,8 +17,6 @@ jobs:
         run: Rscript -e 'install.packages(c("rmarkdown","bookdown"))'
       - name: Install dependancies
         run: Rscript -e 'install.packages(c("rio","here"))'
-      - name: Install remote dependancies  
-        run: Rscript -e 'install.packages(c("remotes"))' -e 'remotes::install_github("epicentre-msf/datadict")'
       - name: Render Book
         run: Rscript -e 'bookdown::render_book("index.Rmd")'
       - uses: actions/upload-artifact@v1
