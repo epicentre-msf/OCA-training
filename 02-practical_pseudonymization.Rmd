@@ -26,7 +26,7 @@ registers, electoral rolls, data from specialized firms)
 ### Identifiers
 
 **Direct identifiers:** variables that unambiguously reveal a person’s identity
-(e.g. name, passport number, phone number, physicial address, email address)
+(e.g. name, passport number, phone number, physical address, email address)
 
 **Indirect identifiers:** variables that contain information that, when combined
 with other variables, could lead to re-identification (e.g. sex, age, marital
@@ -38,7 +38,7 @@ area).
 
 A measure of re-identification risk for discrete variables. *k* = the number of
 records in a dataset containing a certain combination of indirect identifiers
-(e.g. how many records with `sex` = "male" and `age_group` = "40-49 years" ?)
+(e.g. how many records with `sex` = "male" and `age_group` = "40-49 years" ?).
 Higher value of *k* means lower re-identification risk, because higher *k* means
 more records in the dataset with the same combination of indirect identifiers.
 
@@ -57,9 +57,9 @@ desired statistical properties
 
 1. Select a threshold value of *k*-anonymity that will be the minimum
 acceptable value for combinations of indirect identifiers within the released
-dataset (e.g. *k* = 5)
+dataset (e.g. *k* = 5).
 2. Assess re-identification risk of each variable (e.g. direct identifier,
-indirect identifier, non-identifying)
+indirect identifier, non-identifying).
 3. Assess utility of each variable for analysis (e.g. high, low, uncertain).
 4. Withhold variables classified as direct identifiers (e.g. name, phone number,
 address). Consider withholding other variables with low utility and non-zero
@@ -71,14 +71,14 @@ variables.
 6. Review all unique values of 'free-text' type variables to ensure they do not
 contain identifying details. Aggregate or withhold as necessary.
 7. Discretise any indirect identifiers that are continuous variables (e.g.
-height in cm -> discrete height categories)
+height in cm -> discrete height categories).
 8. Assess re-identification risk criterion (i.e. *k*-anonymity) using all
-indirect identifiers
+indirect identifiers.
 9. Pseudonymize indirect identifiers to limit re-identification risk (e.g.
-aggregate, withhold)
-10. Repeat steps 8 and 9 until the given risk criterion is met
+aggregate, withhold).
+10. Repeat steps 8 and 9 until the given risk criterion is met.
 11. Ensure that the final pseudonymized dataset and dictionary meet all
-data-sharing requirements
+data-sharing requirements.
 
 ## Exercise
 
