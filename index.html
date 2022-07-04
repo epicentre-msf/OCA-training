@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>OCA Data Sharing Practicals</title>
   <meta name="description" content="OCA Data Sharing Practicals: Data dictionaries and pseudonymization" />
-  <meta name="generator" content="bookdown 0.26 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.27 and GitBook 2.6.7" />
 
   <meta property="og:title" content="OCA Data Sharing Practicals" />
   <meta property="og:type" content="book" />
@@ -135,7 +135,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><a href="./">OCA Data Sharing Practicals</a></li>
 
 <li class="divider"></li>
-<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduction</a></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduction</a><ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#setup"><i class="fa fa-check"></i><b>1.1</b> Setup</a></li>
+</ul></li>
 <li class="chapter" data-level="2" data-path="data-dict.html"><a href="data-dict.html"><i class="fa fa-check"></i><b>2</b> Data dictionaries</a><ul>
 <li class="chapter" data-level="2.1" data-path="data-dict.html"><a href="data-dict.html#objectives"><i class="fa fa-check"></i><b>2.1</b> Objectives</a></li>
 <li class="chapter" data-level="2.2" data-path="data-dict.html"><a href="data-dict.html#background"><i class="fa fa-check"></i><b>2.2</b> Background</a></li>
@@ -189,7 +191,25 @@ to accompany datasets that will be shared</p></li>
 <li><p><a href="pseudonym.html#pseudonym">Chapter 3: Pseudonymization</a> covers techniques for assessing and limiting disclosure risk
 when preparing datasets to be share</p></li>
 </ul>
+<div id="setup" class="section level2 hasAnchor">
+<h2><span class="header-section-number">1.1</span> Setup<a href="index.html#setup" class="anchor-section" aria-label="Anchor link to header"></a></h2>
+<p>Before moving on to Chapter 2, setup a folder on your computer where you can
+store the datasets that accompany this practical. If you use R Studio we
+suggest setting up a new R Project, as described in <a href="https://epirhandbook.com/en/r-projects.html">The Epidemiologist R
+Handbook</a>.</p>
+<p>The datasets used in Chapters 2 and 3 can be downloaded from GitHub via the
+links below. Our example code chunks in Chapters 2 and 3 assume that these
+datasets will be stored within a folder called “data/”.</p>
+<ul>
+<li><a href="https://github.com/epicentre-msf/OCA-training/raw/main/data/mortality_survey_simple_kobo.xlsx">mortality_survey_simple_kobo.xlsx</a></li>
+<li><a href="https://github.com/epicentre-msf/OCA-training/raw/main/data/mortality_survey_simple_data.xlsx">mortality_survey_simple_data.xlsx</a></li>
+<li><a href="https://github.com/epicentre-msf/OCA-training/raw/main/data/mortality_survey_simple_dict_pre_pseudonym.xlsx">mortality_survey_simple_dict_pre_pseudonym.xlsx</a></li>
+</ul>
+<p>You will also need to install some R packages.</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="index.html#cb1-1"></a><span class="kw">install.packages</span>(<span class="kw">c</span>(<span class="st">&quot;remotes&quot;</span>, <span class="st">&quot;rio&quot;</span>, <span class="st">&quot;here&quot;</span>))</span>
+<span id="cb1-2"><a href="index.html#cb1-2"></a>remotes<span class="op">::</span><span class="kw">install_github</span>(<span class="st">&quot;epicentre-msf/datadict&quot;</span>)</span></code></pre></div>
 
+</div>
 </div>
             </section>
 

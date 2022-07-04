@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 3 Pseudonymization | OCA Data Sharing Practicals</title>
   <meta name="description" content="Chapter 3 Pseudonymization | OCA Data Sharing Practicals: Data dictionaries and pseudonymization" />
-  <meta name="generator" content="bookdown 0.26 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.27 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 3 Pseudonymization | OCA Data Sharing Practicals" />
   <meta property="og:type" content="book" />
@@ -135,7 +135,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><a href="./">OCA Data Sharing Practicals</a></li>
 
 <li class="divider"></li>
-<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduction</a></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduction</a><ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#setup"><i class="fa fa-check"></i><b>1.1</b> Setup</a></li>
+</ul></li>
 <li class="chapter" data-level="2" data-path="data-dict.html"><a href="data-dict.html"><i class="fa fa-check"></i><b>2</b> Data dictionaries</a><ul>
 <li class="chapter" data-level="2.1" data-path="data-dict.html"><a href="data-dict.html#objectives"><i class="fa fa-check"></i><b>2.1</b> Objectives</a></li>
 <li class="chapter" data-level="2.2" data-path="data-dict.html"><a href="data-dict.html#background"><i class="fa fa-check"></i><b>2.2</b> Background</a></li>
@@ -262,22 +264,23 @@ data-sharing requirements.</li>
 </div>
 <div id="exercise" class="section level2 hasAnchor">
 <h2><span class="header-section-number">3.4</span> Exercise<a href="pseudonym.html#exercise" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>This repository includes an example dataset based on a mortality survey. Load
-the dataset and pre-prepared data dictionary using the example code below, and
-use them to work through the pseudonymization workflow described above.</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="pseudonym.html#cb2-1"></a><span class="kw">library</span>(rio)</span>
-<span id="cb2-2"><a href="pseudonym.html#cb2-2"></a><span class="kw">library</span>(here)</span>
-<span id="cb2-3"><a href="pseudonym.html#cb2-3"></a></span>
-<span id="cb2-4"><a href="pseudonym.html#cb2-4"></a><span class="co"># import dataset and prepared data dictionary</span></span>
-<span id="cb2-5"><a href="pseudonym.html#cb2-5"></a>dat &lt;-<span class="st"> </span>rio<span class="op">::</span><span class="kw">import</span>(<span class="kw">here</span>(<span class="st">&quot;data/mortality_survey_simple_data.xlsx&quot;</span>), <span class="dt">setclass =</span> <span class="st">&quot;tbl&quot;</span>)</span>
-<span id="cb2-6"><a href="pseudonym.html#cb2-6"></a>dict &lt;-<span class="st"> </span>rio<span class="op">::</span><span class="kw">import</span>(<span class="kw">here</span>(<span class="st">&quot;data/mortality_survey_simple_dict_pre_pseudonym.xlsx&quot;</span>), <span class="dt">setclass =</span> <span class="st">&quot;tbl&quot;</span>)</span></code></pre></div>
+<p>This repository includes an example dataset based on a mortality survey (see
+section <a href="index.html#setup">1.1 Setup</a> for data download links). Load the dataset and
+pre-prepared data dictionary using the example code below, and use them to work
+through the pseudonymization workflow described above.</p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="pseudonym.html#cb3-1"></a><span class="kw">library</span>(rio)</span>
+<span id="cb3-2"><a href="pseudonym.html#cb3-2"></a><span class="kw">library</span>(here)</span>
+<span id="cb3-3"><a href="pseudonym.html#cb3-3"></a></span>
+<span id="cb3-4"><a href="pseudonym.html#cb3-4"></a><span class="co"># import dataset and prepared data dictionary</span></span>
+<span id="cb3-5"><a href="pseudonym.html#cb3-5"></a>dat &lt;-<span class="st"> </span>rio<span class="op">::</span><span class="kw">import</span>(<span class="kw">here</span>(<span class="st">&quot;data/mortality_survey_simple_data.xlsx&quot;</span>), <span class="dt">setclass =</span> <span class="st">&quot;tbl&quot;</span>)</span>
+<span id="cb3-6"><a href="pseudonym.html#cb3-6"></a>dict &lt;-<span class="st"> </span>rio<span class="op">::</span><span class="kw">import</span>(<span class="kw">here</span>(<span class="st">&quot;data/mortality_survey_simple_dict_pre_pseudonym.xlsx&quot;</span>), <span class="dt">setclass =</span> <span class="st">&quot;tbl&quot;</span>)</span></code></pre></div>
 <p>As you make your way through the pseudonymization workflow, answer the following
 questions:</p>
 <p><strong>(1) Which variables, if any, did you assess as either direct or indirect
 identifiers?</strong></p>
 <p><strong>(2) Despite not being completely familiar with the original study, were you
 able to assess any variables as being of low utility for analysis? If so, what
-actions did you</strong></p>
+actions did you take?</strong></p>
 <p><strong>(3) Did you find any groups of related variables that you decided to merge
 into a new derived variable?</strong></p>
 <p><strong>(4) In your assessment of free-text variables, did you notice any values that

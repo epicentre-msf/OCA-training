@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 2 Data dictionaries | OCA Data Sharing Practicals</title>
   <meta name="description" content="Chapter 2 Data dictionaries | OCA Data Sharing Practicals: Data dictionaries and pseudonymization" />
-  <meta name="generator" content="bookdown 0.26 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.27 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 2 Data dictionaries | OCA Data Sharing Practicals" />
   <meta property="og:type" content="book" />
@@ -135,7 +135,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><a href="./">OCA Data Sharing Practicals</a></li>
 
 <li class="divider"></li>
-<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduction</a></li>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduction</a><ul>
+<li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#setup"><i class="fa fa-check"></i><b>1.1</b> Setup</a></li>
+</ul></li>
 <li class="chapter" data-level="2" data-path="data-dict.html"><a href="data-dict.html"><i class="fa fa-check"></i><b>2</b> Data dictionaries</a><ul>
 <li class="chapter" data-level="2.1" data-path="data-dict.html"><a href="data-dict.html#objectives"><i class="fa fa-check"></i><b>2.1</b> Objectives</a></li>
 <li class="chapter" data-level="2.2" data-path="data-dict.html"><a href="data-dict.html#background"><i class="fa fa-check"></i><b>2.2</b> Background</a></li>
@@ -266,26 +268,28 @@ hand in Excel).</p>
 </div>
 <div id="exercises" class="section level2 hasAnchor">
 <h2><span class="header-section-number">2.5</span> Exercises<a href="data-dict.html#exercises" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<p>This repository includes an example dataset based on a mortality survey. Load
-the dataset and corresponding ODK data dictionary using the example code below,
-and work through the following exercises using functions from the <code>datadict</code>
-package where possible.</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb1-1"><a href="data-dict.html#cb1-1"></a><span class="kw">library</span>(rio)</span>
-<span id="cb1-2"><a href="data-dict.html#cb1-2"></a><span class="kw">library</span>(here)</span>
-<span id="cb1-3"><a href="data-dict.html#cb1-3"></a></span>
-<span id="cb1-4"><a href="data-dict.html#cb1-4"></a><span class="co"># import dataset</span></span>
-<span id="cb1-5"><a href="data-dict.html#cb1-5"></a>dat &lt;-<span class="st"> </span>rio<span class="op">::</span><span class="kw">import</span>(<span class="kw">here</span>(<span class="st">&quot;data/mortality_survey_simple_data.xlsx&quot;</span>), <span class="dt">setclass =</span> <span class="st">&quot;tbl&quot;</span>)</span>
-<span id="cb1-6"><a href="data-dict.html#cb1-6"></a></span>
-<span id="cb1-7"><a href="data-dict.html#cb1-7"></a><span class="co"># import ODK dictionary (note the main dictionary and multiple-choice options are in separate sheets)</span></span>
-<span id="cb1-8"><a href="data-dict.html#cb1-8"></a>odk_survey &lt;-<span class="st"> </span>rio<span class="op">::</span><span class="kw">import</span>(<span class="kw">here</span>(<span class="st">&quot;data/mortality_survey_simple_kobo.xlsx&quot;</span>), <span class="dt">sheet =</span> <span class="st">&quot;survey&quot;</span>, <span class="dt">setclass =</span> <span class="st">&quot;tbl&quot;</span>)</span>
-<span id="cb1-9"><a href="data-dict.html#cb1-9"></a>odk_choices &lt;-<span class="st"> </span>rio<span class="op">::</span><span class="kw">import</span>(<span class="kw">here</span>(<span class="st">&quot;data/mortality_survey_simple_kobo.xlsx&quot;</span>), <span class="dt">sheet =</span> <span class="st">&quot;choices&quot;</span>, <span class="dt">setclass =</span> <span class="st">&quot;tbl&quot;</span>)</span></code></pre></div>
+<p>This repository includes an example dataset based on a mortality survey, and
+corresponding ODK data dictionary (see section <a href="index.html#setup">1.1 Setup</a> for data
+download links). Load the dataset and data dictionary using the example code
+below (note you may need to modify the file path, depending on how you setup
+your project), and work through the following exercises using functions from the
+<code>datadict</code> package where possible.</p>
+<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb2-1"><a href="data-dict.html#cb2-1"></a><span class="kw">library</span>(rio)</span>
+<span id="cb2-2"><a href="data-dict.html#cb2-2"></a><span class="kw">library</span>(here)</span>
+<span id="cb2-3"><a href="data-dict.html#cb2-3"></a></span>
+<span id="cb2-4"><a href="data-dict.html#cb2-4"></a><span class="co"># import dataset</span></span>
+<span id="cb2-5"><a href="data-dict.html#cb2-5"></a>dat &lt;-<span class="st"> </span>rio<span class="op">::</span><span class="kw">import</span>(<span class="kw">here</span>(<span class="st">&quot;data/mortality_survey_simple_data.xlsx&quot;</span>), <span class="dt">setclass =</span> <span class="st">&quot;tbl&quot;</span>)</span>
+<span id="cb2-6"><a href="data-dict.html#cb2-6"></a></span>
+<span id="cb2-7"><a href="data-dict.html#cb2-7"></a><span class="co"># import ODK dictionary (note the main dictionary and multiple-choice options are in separate sheets)</span></span>
+<span id="cb2-8"><a href="data-dict.html#cb2-8"></a>odk_survey &lt;-<span class="st"> </span>rio<span class="op">::</span><span class="kw">import</span>(<span class="kw">here</span>(<span class="st">&quot;data/mortality_survey_simple_kobo.xlsx&quot;</span>), <span class="dt">sheet =</span> <span class="st">&quot;survey&quot;</span>, <span class="dt">setclass =</span> <span class="st">&quot;tbl&quot;</span>)</span>
+<span id="cb2-9"><a href="data-dict.html#cb2-9"></a>odk_choices &lt;-<span class="st"> </span>rio<span class="op">::</span><span class="kw">import</span>(<span class="kw">here</span>(<span class="st">&quot;data/mortality_survey_simple_kobo.xlsx&quot;</span>), <span class="dt">sheet =</span> <span class="st">&quot;choices&quot;</span>, <span class="dt">setclass =</span> <span class="st">&quot;tbl&quot;</span>)</span></code></pre></div>
 <div id="exercise-1" class="section level3 hasAnchor">
 <h3><span class="header-section-number">2.5.1</span> Exercise 1<a href="data-dict.html#exercise-1" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>With the <code>datadict</code> package we can prepare a dictionary template <em>either</em> from
-the raw dataset (using <code>dict_from_data()</code>) or from the ODK dictionary (using
-<code>dict_from_odk()</code>). Try both approaches separately and compare the resulting
-dictionary templates. What are some differences? Can you guess why these
-differences are occurring?</p>
+the raw dataset (using function <code>dict_from_data()</code>) or from the ODK dictionary
+(using function <code>dict_from_odk()</code>). Try both approaches separately and compare
+the resulting dictionary templates. What are some differences? Can you guess why
+these differences are occurring?</p>
 </div>
 <div id="exercise-2" class="section level3 hasAnchor">
 <h3><span class="header-section-number">2.5.2</span> Exercise 2<a href="data-dict.html#exercise-2" class="anchor-section" aria-label="Anchor link to header"></a></h3>
