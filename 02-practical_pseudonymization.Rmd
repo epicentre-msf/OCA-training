@@ -82,9 +82,10 @@ data-sharing requirements.
 
 ## Exercise
 
-This repository includes an example dataset based on a mortality survey. Load
-the dataset and pre-prepared data dictionary using the example code below, and
-use them to work through the pseudonymization workflow described above.
+This repository includes an example dataset based on a mortality survey (see
+section [1.1 Setup](#setup) for data download links). Load the dataset and
+pre-prepared data dictionary using the example code below, and use them to work
+through the pseudonymization workflow described above.
 
 ```{r, message=FALSE}
 library(rio)
@@ -103,7 +104,7 @@ identifiers?**
 
 **(2) Despite not being completely familiar with the original study, were you
 able to assess any variables as being of low utility for analysis? If so, what
-actions did you**
+actions did you take?**
 
 **(3) Did you find any groups of related variables that you decided to merge
 into a new derived variable?**

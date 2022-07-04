@@ -55,10 +55,12 @@ hand in Excel).
 
 ## Exercises
 
-This repository includes an example dataset based on a mortality survey. Load
-the dataset and corresponding ODK data dictionary using the example code below,
-and work through the following exercises using functions from the `datadict`
-package where possible.
+This repository includes an example dataset based on a mortality survey, and
+corresponding ODK data dictionary (see section [1.1 Setup](#setup) for data
+download links). Load the dataset and data dictionary using the example code
+below (note you may need to modify the file path, depending on how you setup
+your project), and work through the following exercises using functions from the
+`datadict` package where possible.
 
 ```{r, message=FALSE}
 library(rio)
@@ -75,10 +77,10 @@ odk_choices <- rio::import(here("data/mortality_survey_simple_kobo.xlsx"), sheet
 ### Exercise 1
 
 With the `datadict` package we can prepare a dictionary template *either* from
-the raw dataset (using `dict_from_data()`) or from the ODK dictionary (using
-`dict_from_odk()`). Try both approaches separately and compare the resulting
-dictionary templates. What are some differences? Can you guess why these
-differences are occurring?
+the raw dataset (using function `dict_from_data()`) or from the ODK dictionary
+(using function `dict_from_odk()`). Try both approaches separately and compare
+the resulting dictionary templates. What are some differences? Can you guess why
+these differences are occurring?
 
 ### Exercise 2
 

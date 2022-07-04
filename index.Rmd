@@ -19,3 +19,26 @@ to accompany datasets that will be shared
 
 - [Chapter 3: Pseudonymization](#pseudonym) covers techniques for assessing and limiting disclosure risk
 when preparing datasets to be share
+
+## Setup {#setup}
+
+Before moving on to Chapter 2, setup a folder on your computer where you can
+store the datasets that accompany this practical. If you use R Studio we
+suggest setting up a new R Project, as described in [The Epidemiologist R
+Handbook](https://epirhandbook.com/en/r-projects.html).
+
+The datasets used in Chapters 2 and 3 can be downloaded from GitHub via the
+links below. Our example code chunks in Chapters 2 and 3 assume that these
+datasets will be stored within a folder called "data/".
+
+- [mortality_survey_simple_kobo.xlsx](https://github.com/epicentre-msf/OCA-training/raw/main/data/mortality_survey_simple_kobo.xlsx)
+- [mortality_survey_simple_data.xlsx](https://github.com/epicentre-msf/OCA-training/raw/main/data/mortality_survey_simple_data.xlsx)
+- [mortality_survey_simple_dict_pre_pseudonym.xlsx](https://github.com/epicentre-msf/OCA-training/raw/main/data/mortality_survey_simple_dict_pre_pseudonym.xlsx)
+
+You will also need to install some R packages.
+
+```{r, eval=FALSE}
+install.packages(c("remotes", "rio", "here"))
+remotes::install_github("epicentre-msf/datadict")
+```
+
