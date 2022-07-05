@@ -34,9 +34,10 @@ of the required fields.
 | -------------- | ----------- | ------------- |
 | variable_name  | Variable name (i.e. exact column name within the corresponding dataset) | "sample_type" |
 | short_label    | Short phrase describing the variable in words | "Type of laboratory sample collected" |
-| origin         | Was the variable a part of the original data collection instrument (option "original"), or was it later derived (option "derived") | "original" |
 | type           | Variable type (options: "Numeric", "Date", "Time", "Datetime", "Coded list", or "Free text") | "Coded list" |
 | choices        | The list of options (pairs of codes and labels) corresponding to a variable of type "Coded list". | "1, Blood \| 2, Nasal swab \| 3, Throat swab \| 4, Other" |
+| origin         | Was the variable a part of the original data collection instrument (option "original"), or was it later derived (option "derived") | "original" |
+| status         | Is the variable shared (option "shared"), or withheld to reduce disclosure risk (option "withheld") ? | "shared" |
 
 ## The `datadict` package
 
