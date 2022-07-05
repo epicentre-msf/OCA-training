@@ -234,19 +234,24 @@ of the required fields.</p>
 <td>“Type of laboratory sample collected”</td>
 </tr>
 <tr class="odd">
+<td>type</td>
+<td>Variable type (options: “Numeric”, “Date”, “Time”, “Datetime”, “Coded list”, or “Free text”)</td>
+<td>“Coded list”</td>
+</tr>
+<tr class="even">
+<td>choices</td>
+<td>The list of options (pairs of codes and labels) corresponding to a variable of type “Coded list”.</td>
+<td>“1, Blood | 2, Nasal swab | 3, Throat swab | 4, Other”</td>
+</tr>
+<tr class="odd">
 <td>origin</td>
 <td>Was the variable a part of the original data collection instrument (option “original”), or was it later derived (option “derived”)</td>
 <td>“original”</td>
 </tr>
 <tr class="even">
-<td>type</td>
-<td>Variable type (options: “Numeric”, “Date”, “Time”, “Datetime”, “Coded list”, or “Free text”)</td>
-<td>“Coded list”</td>
-</tr>
-<tr class="odd">
-<td>choices</td>
-<td>The list of options (pairs of codes and labels) corresponding to a variable of type “Coded list”.</td>
-<td>“1, Blood | 2, Nasal swab | 3, Throat swab | 4, Other”</td>
+<td>status</td>
+<td>Is the variable shared (option “shared”), or withheld to reduce disclosure risk (option “withheld”) ?</td>
+<td>“shared”</td>
 </tr>
 </tbody>
 </table>
