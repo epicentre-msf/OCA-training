@@ -83,6 +83,27 @@ the raw dataset (using function `dict_from_data()`) or from the ODK dictionary
 the resulting dictionary templates. What are some differences? Can you guess why
 these differences are occurring?
 
+<details style="color:#b30000">
+  <summary><b>See proposed answer</b></summary>
+
+```{r}
+dict_dat <- datadict::dict_from_data(dat)
+dict_odk <- datadict::dict_from_odk(odk_survey, odk_choices)
+
+
+if (!dir.exists(here("output"))) dir.create(here("output"))
+rio::export(dict_dat, here("output/ex1_dict_dat.xlsx"))
+rio::export(dict_odk, here("output/ex1_dict_odk.xlsx"))
+```
+
+- Function `dict_from_data()` doesn't populate column `short_label`, whereas
+`dict_from_odk()` does
+- Variable types in column `type` are different. Function `dict_from_data()`
+guesses only 'Free text' and 'Coded list', whereas `dict_from_odk()` also
+returns 'Date' and 'Numeric'
+
+</details>
+
 ### Exercise 2
 
 When producing a dictionary template using `dict_from_data()`, the variable type
@@ -95,6 +116,47 @@ transform the columns of `dat` using functions like `as.numeric()` or
 `dict_from_data()`. What are the differences that remain between this dictionary
 template and the template derived from the ODK dictionary?
 
+<details style="color:#b30000">
+  <summary><b>See proposed answer</b></summary>
+
+```{r}
+vars_date <- c(
+  "date",
+  "date_arrived",
+  "date_departed",
+  "date_born",
+  "date_died"
+)
+
+vars_numeric <- c(
+  "cluster",
+  "age_months",
+  "age_years",
+  "muac"
+)
+
+for (j in vars_date) {
+  dat[[j]] <- as.Date(dat[[j]])
+}
+
+for (j in vars_numeric) {
+  dat[[j]] <- as.numeric(dat[[j]])
+}
+
+dict_dat <- datadict::dict_from_data(dat)
+rio::export(dict_dat, here("output/ex2_dict_dat.xlsx"))
+```
+
+- Function `dict_from_data()` classifies some variables as "Coded list" that
+`dict_from_odk()` classifies as "Free text" (`source_water_other`,
+`ilness_other`, `cause_death_other`)
+- Various differences in column `choices` (order varies, some entries missing
+with `dict_from_data()`, labels same but values differ)
+- Function `dict_from_odk()` retains extra columns from ODK data dictionary
+(e.g. `constrain`, `relevant`, etc.)
+
+</details>
+
 ### Exercise 3
 
 Examine the options for the 'Coded list' type variables in the dictionary
@@ -106,11 +168,46 @@ data sharing?
 Hint: check out the function `datadict::coded_options()` to extract a long-form
 table of Coded list variables and corresponding options from a dictionary.
 
+<details style="color:#b30000">
+  <summary><b>See proposed answer</b></summary>
+
+```{r}
+opts_dat <- datadict::coded_options(dict_dat)
+opts_odk <- datadict::coded_options(dict_odk)
+
+rio::export(opts_dat, here("output/ex3_opts_dat.xlsx"))
+rio::export(opts_odk, here("output/ex3_opts_odk.xlsx"))
+```
+
+- Function `dict_from_data()` only includes options that appear in the dataset,
+whereas `dict_from_odk()` includes all options from original ODK dictionary
+
+</details>
+
 ### Exercise 4
 
 Use the function `valid_dict()` to check that the dictionary you produced in
 Exercise 2 complies with the OCA standard. Assuming it does, edit the dictionary
 so that it fails at least two of the checks implemented by `valid_dict()`.
+
+<details style="color:#b30000">
+  <summary><b>See proposed answer</b></summary>
+  
+```{r, error=TRUE}
+datadict::valid_dict(dict_dat)
+
+dict_dat_fail1 <- dict_dat
+dict_dat_fail1$variable_name[4] <- NA_character_
+
+datadict::valid_dict(dict_dat_fail1)
+
+dict_dat_fail2 <- dict_dat
+dict_dat_fail2$type <- "Number"
+
+datadict::valid_dict(dict_dat_fail2)
+```
+  
+</details>
 
 ### Exercise 5
 
@@ -118,3 +215,21 @@ Use the function `valid_data()` to check for consistency between the dataset and
 dictionary produced in Exercise 2. Assuming all checks pass, edit the dataset so
 that it fails at least two of the checks implemented by `valid_data()`.
 
+<details style="color:#b30000">
+  <summary><b>See proposed answer</b></summary>
+
+```{r}
+datadict::valid_data(dat, dict_dat)
+
+# add nonvalid date
+dat$date <- as.character(dat$date)
+dat$date[4] <- "July ?, 2021"
+
+# remove column present in dictionary
+dat$oedema <- NULL
+
+datadict::valid_data(dat, dict_dat)
+```
+
+
+</details>

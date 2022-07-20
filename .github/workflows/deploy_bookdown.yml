@@ -1,3 +1,5 @@
+# From:
+# https://orchid00.github.io/actions_sandbox/websites-using-pkgdown-bookdown-and-blogdown.html#deploy-bookdown
 on:
   push:
      branches:
@@ -16,7 +18,9 @@ jobs:
       - name: Install rmarkdown
         run: Rscript -e 'install.packages(c("rmarkdown","bookdown"))'
       - name: Install dependancies
-        run: Rscript -e 'install.packages(c("rio","here"))'
+        run: Rscript -e 'install.packages(c("rio", "here", "dplyr", "remotes"))'
+      - name: Install remote dependancies
+        run: Rscript -e 'remotes::install_github("epicentre-msf/datadict")'
       - name: Render Book
         run: Rscript -e 'bookdown::render_book("index.Rmd")'
       - uses: actions/upload-artifact@v1
