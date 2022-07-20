@@ -295,6 +295,22 @@ the raw dataset (using function <code>dict_from_data()</code>) or from the ODK d
 (using function <code>dict_from_odk()</code>). Try both approaches separately and compare
 the resulting dictionary templates. What are some differences? Can you guess why
 these differences are occurring?</p>
+<details style="color:#b30000">
+<p><summary><b>See proposed answer</b></summary></p>
+<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb3-1"><a href="data-dict.html#cb3-1"></a>dict_dat &lt;-<span class="st"> </span>datadict<span class="op">::</span><span class="kw">dict_from_data</span>(dat)</span>
+<span id="cb3-2"><a href="data-dict.html#cb3-2"></a>dict_odk &lt;-<span class="st"> </span>datadict<span class="op">::</span><span class="kw">dict_from_odk</span>(odk_survey, odk_choices)</span>
+<span id="cb3-3"><a href="data-dict.html#cb3-3"></a></span>
+<span id="cb3-4"><a href="data-dict.html#cb3-4"></a><span class="cf">if</span> (<span class="op">!</span><span class="kw">dir.exists</span>(<span class="kw">here</span>(<span class="st">&quot;output&quot;</span>))) <span class="kw">dir.create</span>(<span class="kw">here</span>(<span class="st">&quot;output&quot;</span>))</span>
+<span id="cb3-5"><a href="data-dict.html#cb3-5"></a>rio<span class="op">::</span><span class="kw">export</span>(dict_dat, <span class="kw">here</span>(<span class="st">&quot;output/ex1_dict_dat.xlsx&quot;</span>))</span>
+<span id="cb3-6"><a href="data-dict.html#cb3-6"></a>rio<span class="op">::</span><span class="kw">export</span>(dict_odk, <span class="kw">here</span>(<span class="st">&quot;output/ex1_dict_odk.xlsx&quot;</span>))</span></code></pre></div>
+<ul>
+<li>Function <code>dict_from_data()</code> doesn’t populate column <code>short_label</code>, whereas
+<code>dict_from_odk()</code> does</li>
+<li>Variable types in column <code>type</code> are different. Function <code>dict_from_data()</code>
+guesses only ‘Free text’ and ‘Coded list’, whereas <code>dict_from_odk()</code> also
+returns ‘Date’ and ‘Numeric’</li>
+</ul>
+</details>
 </div>
 <div id="exercise-2" class="section level3 hasAnchor">
 <h3><span class="header-section-number">2.5.2</span> Exercise 2<a href="data-dict.html#exercise-2" class="anchor-section" aria-label="Anchor link to header"></a></h3>
@@ -307,6 +323,43 @@ transform the columns of <code>dat</code> using functions like <code>as.numeric(
 <code>as.Date()</code> and then produce another dictionary template using
 <code>dict_from_data()</code>. What are the differences that remain between this dictionary
 template and the template derived from the ODK dictionary?</p>
+<details style="color:#b30000">
+<p><summary><b>See proposed answer</b></summary></p>
+<div class="sourceCode" id="cb4"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb4-1"><a href="data-dict.html#cb4-1"></a>vars_date &lt;-<span class="st"> </span><span class="kw">c</span>(</span>
+<span id="cb4-2"><a href="data-dict.html#cb4-2"></a>  <span class="st">&quot;date&quot;</span>,</span>
+<span id="cb4-3"><a href="data-dict.html#cb4-3"></a>  <span class="st">&quot;date_arrived&quot;</span>,</span>
+<span id="cb4-4"><a href="data-dict.html#cb4-4"></a>  <span class="st">&quot;date_departed&quot;</span>,</span>
+<span id="cb4-5"><a href="data-dict.html#cb4-5"></a>  <span class="st">&quot;date_born&quot;</span>,</span>
+<span id="cb4-6"><a href="data-dict.html#cb4-6"></a>  <span class="st">&quot;date_died&quot;</span></span>
+<span id="cb4-7"><a href="data-dict.html#cb4-7"></a>)</span>
+<span id="cb4-8"><a href="data-dict.html#cb4-8"></a></span>
+<span id="cb4-9"><a href="data-dict.html#cb4-9"></a>vars_numeric &lt;-<span class="st"> </span><span class="kw">c</span>(</span>
+<span id="cb4-10"><a href="data-dict.html#cb4-10"></a>  <span class="st">&quot;cluster&quot;</span>,</span>
+<span id="cb4-11"><a href="data-dict.html#cb4-11"></a>  <span class="st">&quot;age_months&quot;</span>,</span>
+<span id="cb4-12"><a href="data-dict.html#cb4-12"></a>  <span class="st">&quot;age_years&quot;</span>,</span>
+<span id="cb4-13"><a href="data-dict.html#cb4-13"></a>  <span class="st">&quot;muac&quot;</span></span>
+<span id="cb4-14"><a href="data-dict.html#cb4-14"></a>)</span>
+<span id="cb4-15"><a href="data-dict.html#cb4-15"></a></span>
+<span id="cb4-16"><a href="data-dict.html#cb4-16"></a><span class="cf">for</span> (j <span class="cf">in</span> vars_date) {</span>
+<span id="cb4-17"><a href="data-dict.html#cb4-17"></a>  dat[[j]] &lt;-<span class="st"> </span><span class="kw">as.Date</span>(dat[[j]])</span>
+<span id="cb4-18"><a href="data-dict.html#cb4-18"></a>}</span>
+<span id="cb4-19"><a href="data-dict.html#cb4-19"></a></span>
+<span id="cb4-20"><a href="data-dict.html#cb4-20"></a><span class="cf">for</span> (j <span class="cf">in</span> vars_numeric) {</span>
+<span id="cb4-21"><a href="data-dict.html#cb4-21"></a>  dat[[j]] &lt;-<span class="st"> </span><span class="kw">as.numeric</span>(dat[[j]])</span>
+<span id="cb4-22"><a href="data-dict.html#cb4-22"></a>}</span>
+<span id="cb4-23"><a href="data-dict.html#cb4-23"></a></span>
+<span id="cb4-24"><a href="data-dict.html#cb4-24"></a>dict_dat &lt;-<span class="st"> </span>datadict<span class="op">::</span><span class="kw">dict_from_data</span>(dat)</span>
+<span id="cb4-25"><a href="data-dict.html#cb4-25"></a>rio<span class="op">::</span><span class="kw">export</span>(dict_dat, <span class="kw">here</span>(<span class="st">&quot;output/ex2_dict_dat.xlsx&quot;</span>))</span></code></pre></div>
+<ul>
+<li>Function <code>dict_from_data()</code> classifies some variables as “Coded list” that
+<code>dict_from_odk()</code> classifies as “Free text” (<code>source_water_other</code>,
+<code>ilness_other</code>, <code>cause_death_other</code>)</li>
+<li>Various differences in column <code>choices</code> (order varies, some entries missing
+with <code>dict_from_data()</code>, labels same but values differ)</li>
+<li>Function <code>dict_from_odk()</code> retains extra columns from ODK data dictionary
+(e.g. <code>constrain</code>, <code>relevant</code>, etc.)</li>
+</ul>
+</details>
 </div>
 <div id="exercise-3" class="section level3 hasAnchor">
 <h3><span class="header-section-number">2.5.3</span> Exercise 3<a href="data-dict.html#exercise-3" class="anchor-section" aria-label="Anchor link to header"></a></h3>
@@ -317,18 +370,89 @@ have fewer ‘Coded list’ options for some variables? Does this matter in term
 data sharing?</p>
 <p>Hint: check out the function <code>datadict::coded_options()</code> to extract a long-form
 table of Coded list variables and corresponding options from a dictionary.</p>
+<details style="color:#b30000">
+<p><summary><b>See proposed answer</b></summary></p>
+<div class="sourceCode" id="cb5"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb5-1"><a href="data-dict.html#cb5-1"></a>opts_dat &lt;-<span class="st"> </span>datadict<span class="op">::</span><span class="kw">coded_options</span>(dict_dat)</span>
+<span id="cb5-2"><a href="data-dict.html#cb5-2"></a>opts_odk &lt;-<span class="st"> </span>datadict<span class="op">::</span><span class="kw">coded_options</span>(dict_odk)</span>
+<span id="cb5-3"><a href="data-dict.html#cb5-3"></a></span>
+<span id="cb5-4"><a href="data-dict.html#cb5-4"></a>rio<span class="op">::</span><span class="kw">export</span>(opts_dat, <span class="kw">here</span>(<span class="st">&quot;output/ex3_opts_dat.xlsx&quot;</span>))</span>
+<span id="cb5-5"><a href="data-dict.html#cb5-5"></a>rio<span class="op">::</span><span class="kw">export</span>(opts_odk, <span class="kw">here</span>(<span class="st">&quot;output/ex3_opts_odk.xlsx&quot;</span>))</span></code></pre></div>
+<ul>
+<li>Function <code>dict_from_data()</code> only includes options that appear in the dataset,
+whereas <code>dict_from_odk()</code> includes all options from original ODK dictionary</li>
+</ul>
+</details>
 </div>
 <div id="exercise-4" class="section level3 hasAnchor">
 <h3><span class="header-section-number">2.5.4</span> Exercise 4<a href="data-dict.html#exercise-4" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Use the function <code>valid_dict()</code> to check that the dictionary you produced in
 Exercise 2 complies with the OCA standard. Assuming it does, edit the dictionary
 so that it fails at least two of the checks implemented by <code>valid_dict()</code>.</p>
+<details style="color:#b30000">
+<p><summary><b>See proposed answer</b></summary></p>
+<div class="sourceCode" id="cb6"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb6-1"><a href="data-dict.html#cb6-1"></a>datadict<span class="op">::</span><span class="kw">valid_dict</span>(dict_dat)</span></code></pre></div>
+<pre><code>## [1] TRUE</code></pre>
+<div class="sourceCode" id="cb8"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb8-1"><a href="data-dict.html#cb8-1"></a>dict_dat_fail1 &lt;-<span class="st"> </span>dict_dat</span>
+<span id="cb8-2"><a href="data-dict.html#cb8-2"></a>dict_dat_fail1<span class="op">$</span>variable_name[<span class="dv">4</span>] &lt;-<span class="st"> </span><span class="ot">NA_character_</span></span>
+<span id="cb8-3"><a href="data-dict.html#cb8-3"></a></span>
+<span id="cb8-4"><a href="data-dict.html#cb8-4"></a>datadict<span class="op">::</span><span class="kw">valid_dict</span>(dict_dat_fail1)</span></code></pre></div>
+<pre><code>## Error: Dictionary has missing values in column `variable_name` at rows: 4</code></pre>
+<div class="sourceCode" id="cb10"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb10-1"><a href="data-dict.html#cb10-1"></a>dict_dat_fail2 &lt;-<span class="st"> </span>dict_dat</span>
+<span id="cb10-2"><a href="data-dict.html#cb10-2"></a>dict_dat_fail2<span class="op">$</span>type &lt;-<span class="st"> &quot;Number&quot;</span></span>
+<span id="cb10-3"><a href="data-dict.html#cb10-3"></a></span>
+<span id="cb10-4"><a href="data-dict.html#cb10-4"></a>datadict<span class="op">::</span><span class="kw">valid_dict</span>(dict_dat_fail2)</span></code></pre></div>
+<pre><code>## Error: Dictionary has non-valid values in column `type`: &quot;Number&quot;</code></pre>
+</details>
 </div>
 <div id="exercise-5" class="section level3 hasAnchor">
 <h3><span class="header-section-number">2.5.5</span> Exercise 5<a href="data-dict.html#exercise-5" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Use the function <code>valid_data()</code> to check for consistency between the dataset and
 dictionary produced in Exercise 2. Assuming all checks pass, edit the dataset so
 that it fails at least two of the checks implemented by <code>valid_data()</code>.</p>
+<details style="color:#b30000">
+<p><summary><b>See proposed answer</b></summary></p>
+<div class="sourceCode" id="cb12"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb12-1"><a href="data-dict.html#cb12-1"></a>datadict<span class="op">::</span><span class="kw">valid_data</span>(dat, dict_dat)</span></code></pre></div>
+<pre><code>## Checking for columns marked &#39;withheld&#39; that contain non-missing values:
+##     OK</code></pre>
+<pre><code>## Checking for columns present in `data` but not defined in `dict`:
+##     OK</code></pre>
+<pre><code>## Checking for columns defined in `dict` but not present in `data`:
+##     OK</code></pre>
+<pre><code>## Checking for problems with variables of type &#39;Numeric&#39;:
+##     OK</code></pre>
+<pre><code>## Checking for problems with variables of type &#39;Date&#39;:
+##     OK</code></pre>
+<pre><code>## Checking for problems with variables of type &#39;Time&#39;:
+##     OK</code></pre>
+<pre><code>## Checking for problems with variables of type &#39;Datetime&#39;:
+##     OK</code></pre>
+<pre><code>## Checking for problems with variables of type &#39;Coded list&#39;:
+##     OK</code></pre>
+<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="data-dict.html#cb21-1"></a><span class="co"># add nonvalid date</span></span>
+<span id="cb21-2"><a href="data-dict.html#cb21-2"></a>dat<span class="op">$</span>date &lt;-<span class="st"> </span><span class="kw">as.character</span>(dat<span class="op">$</span>date)</span>
+<span id="cb21-3"><a href="data-dict.html#cb21-3"></a>dat<span class="op">$</span>date[<span class="dv">4</span>] &lt;-<span class="st"> &quot;July ?, 2021&quot;</span></span>
+<span id="cb21-4"><a href="data-dict.html#cb21-4"></a></span>
+<span id="cb21-5"><a href="data-dict.html#cb21-5"></a><span class="co"># remove column present in dictionary</span></span>
+<span id="cb21-6"><a href="data-dict.html#cb21-6"></a>dat<span class="op">$</span>oedema &lt;-<span class="st"> </span><span class="ot">NULL</span></span>
+<span id="cb21-7"><a href="data-dict.html#cb21-7"></a></span>
+<span id="cb21-8"><a href="data-dict.html#cb21-8"></a>datadict<span class="op">::</span><span class="kw">valid_data</span>(dat, dict_dat)</span></code></pre></div>
+<pre><code>## Checking for columns marked &#39;withheld&#39; that contain non-missing values:
+##     OK</code></pre>
+<pre><code>## Checking for columns present in `data` but not defined in `dict`:
+##     OK</code></pre>
+<pre><code>## Checking for columns defined in `dict` but not present in `data`:
+##     c(&quot;oedema&quot;)</code></pre>
+<pre><code>## Checking for problems with variables of type &#39;Numeric&#39;:
+##     OK</code></pre>
+<pre><code>## Checking for problems with variables of type &#39;Date&#39;:
+##     c(&quot;date&quot;)</code></pre>
+<pre><code>## Checking for problems with variables of type &#39;Time&#39;:
+##     OK</code></pre>
+<pre><code>## Checking for problems with variables of type &#39;Datetime&#39;:
+##     OK</code></pre>
+<pre><code>## Checking for problems with variables of type &#39;Coded list&#39;:
+##     OK</code></pre>
+</details>
 
 </div>
 </div>

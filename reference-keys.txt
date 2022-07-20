@@ -20,3 +20,14 @@ k-anonymity
 pseudonymization
 typical-workflow
 exercise
+select-a-threshold-value-of-k-anonymity
+assess-re-identification-risk-of-each-variable-e.g.-direct-identifier-indirect-identifier-non-identifying.
+assess-utility-of-each-variable-for-analysis-e.g.-high-low-uncertain.
+withhold-variables-classified-as-direct-identifiers.-consider-withholding-other-variables-with-low-utility-and-non-zero-re-identification-risk.
+merge-groups-of-related-indirect-identifiers-where-possible.
+review-all-unique-values-of-free-text-type-variables-to-ensure-they-do-not-contain-identifying-details.-aggregate-or-withhold-as-necessary.
+discretise-any-indirect-identifiers-that-are-continuous-variables.
+assess-re-identification-risk-criterion-i.e.-k-anonymity-using-all-indirect-identifiers.
+pseudonymize-indirect-identifiers-to-limit-re-identification-risk-e.g.-aggregate-withhold.
+repeat-steps-8-and-9-until-the-given-risk-criterion-is-met.
+ensure-that-the-final-pseudonymized-dataset-and-dictionary-meet-all-data-sharing-requirements.
