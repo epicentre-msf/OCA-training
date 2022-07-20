@@ -90,7 +90,6 @@ these differences are occurring?
 dict_dat <- datadict::dict_from_data(dat)
 dict_odk <- datadict::dict_from_odk(odk_survey, odk_choices)
 
-
 if (!dir.exists(here("output"))) dir.create(here("output"))
 rio::export(dict_dat, here("output/ex1_dict_dat.xlsx"))
 rio::export(dict_odk, here("output/ex1_dict_odk.xlsx"))
