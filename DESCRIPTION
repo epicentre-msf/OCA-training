@@ -1,0 +1,26 @@
+Title: OCA DSI Data Sharing Practicals
+Version: 0.0.0.9000
+Authors@R: c(
+    person(
+      "Patrick", "Barks",
+      email = "patrick.barks@epicentre.msf.org",
+      role = c("aut", "cre")
+    )
+  )
+Description: OCA DSI Data Sharing Practicals.
+Encoding: UTF-8
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.2.3
+Imports:
+    dplyr,
+    rio,
+    here,
+    pacman
+    datadict,
+    qxl
+Remotes:
+    epicentre-msf/datadict,
+    epicentre-msf/qxl
+Depends: 
+    R (>= 2.10)
+LazyData: true
