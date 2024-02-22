@@ -6,7 +6,7 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <title>Chapter 3 Pseudonymization | OCA Data Sharing Practicals</title>
   <meta name="description" content="Chapter 3 Pseudonymization | OCA Data Sharing Practicals: Data dictionaries and pseudonymization" />
-  <meta name="generator" content="bookdown 0.27 and GitBook 2.6.7" />
+  <meta name="generator" content="bookdown 0.37 and GitBook 2.6.7" />
 
   <meta property="og:title" content="Chapter 3 Pseudonymization | OCA Data Sharing Practicals" />
   <meta property="og:type" content="book" />
@@ -47,25 +47,24 @@
 
 
 
-<script src="libs/accessible-code-block-0.0.1/empty-anchor.js"></script>
 <link href="libs/anchor-sections-1.1.0/anchor-sections.css" rel="stylesheet" />
 <link href="libs/anchor-sections-1.1.0/anchor-sections-hash.css" rel="stylesheet" />
 <script src="libs/anchor-sections-1.1.0/anchor-sections.js"></script>
 
 
 <style type="text/css">
-code.sourceCode > span { display: inline-block; line-height: 1.25; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-code.sourceCode > span:empty { height: 1.2em; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
-code.sourceCode { white-space: pre; position: relative; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
 pre.sourceCode { margin: 0; }
 @media screen {
 div.sourceCode { overflow: auto; }
 }
 @media print {
-code.sourceCode { white-space: pre-wrap; }
-code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
   { counter-reset: source-line 0; }
@@ -85,13 +84,13 @@ pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-le
 div.sourceCode
   {   }
 @media screen {
-code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 code span.al { color: #ff0000; font-weight: bold; } /* Alert */
 code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
 code span.at { color: #7d9029; } /* Attribute */
 code span.bn { color: #40a070; } /* BaseN */
-code span.bu { } /* BuiltIn */
+code span.bu { color: #008000; } /* BuiltIn */
 code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
 code span.ch { color: #4070a0; } /* Char */
 code span.cn { color: #880000; } /* Constant */
@@ -104,7 +103,7 @@ code span.er { color: #ff0000; font-weight: bold; } /* Error */
 code span.ex { } /* Extension */
 code span.fl { color: #40a070; } /* Float */
 code span.fu { color: #06287e; } /* Function */
-code span.im { } /* Import */
+code span.im { color: #008000; font-weight: bold; } /* Import */
 code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
 code span.kw { color: #007020; font-weight: bold; } /* Keyword */
 code span.op { color: #666666; } /* Operator */
@@ -118,6 +117,10 @@ code span.vs { color: #4070a0; } /* VerbatimString */
 code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
 </style>
 
+<style type="text/css">
+  
+  div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+</style>
 
 <link rel="stylesheet" href="style.css" type="text/css" />
 </head>
@@ -135,15 +138,18 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li><a href="./">OCA Data Sharing Practicals</a></li>
 
 <li class="divider"></li>
-<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduction</a><ul>
+<li class="chapter" data-level="1" data-path="index.html"><a href="index.html"><i class="fa fa-check"></i><b>1</b> Introduction</a>
+<ul>
 <li class="chapter" data-level="1.1" data-path="index.html"><a href="index.html#setup"><i class="fa fa-check"></i><b>1.1</b> Setup</a></li>
 </ul></li>
-<li class="chapter" data-level="2" data-path="data-dict.html"><a href="data-dict.html"><i class="fa fa-check"></i><b>2</b> Data dictionaries</a><ul>
+<li class="chapter" data-level="2" data-path="data-dict.html"><a href="data-dict.html"><i class="fa fa-check"></i><b>2</b> Data dictionaries</a>
+<ul>
 <li class="chapter" data-level="2.1" data-path="data-dict.html"><a href="data-dict.html#objectives"><i class="fa fa-check"></i><b>2.1</b> Objectives</a></li>
 <li class="chapter" data-level="2.2" data-path="data-dict.html"><a href="data-dict.html#background"><i class="fa fa-check"></i><b>2.2</b> Background</a></li>
 <li class="chapter" data-level="2.3" data-path="data-dict.html"><a href="data-dict.html#dictionary-format"><i class="fa fa-check"></i><b>2.3</b> Dictionary format</a></li>
 <li class="chapter" data-level="2.4" data-path="data-dict.html"><a href="data-dict.html#the-datadict-package"><i class="fa fa-check"></i><b>2.4</b> The <code>datadict</code> package</a></li>
-<li class="chapter" data-level="2.5" data-path="data-dict.html"><a href="data-dict.html#exercises"><i class="fa fa-check"></i><b>2.5</b> Exercises</a><ul>
+<li class="chapter" data-level="2.5" data-path="data-dict.html"><a href="data-dict.html#exercises"><i class="fa fa-check"></i><b>2.5</b> Exercises</a>
+<ul>
 <li class="chapter" data-level="2.5.1" data-path="data-dict.html"><a href="data-dict.html#exercise-1"><i class="fa fa-check"></i><b>2.5.1</b> Exercise 1</a></li>
 <li class="chapter" data-level="2.5.2" data-path="data-dict.html"><a href="data-dict.html#exercise-2"><i class="fa fa-check"></i><b>2.5.2</b> Exercise 2</a></li>
 <li class="chapter" data-level="2.5.3" data-path="data-dict.html"><a href="data-dict.html#exercise-3"><i class="fa fa-check"></i><b>2.5.3</b> Exercise 3</a></li>
@@ -151,9 +157,11 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
 <li class="chapter" data-level="2.5.5" data-path="data-dict.html"><a href="data-dict.html#exercise-5"><i class="fa fa-check"></i><b>2.5.5</b> Exercise 5</a></li>
 </ul></li>
 </ul></li>
-<li class="chapter" data-level="3" data-path="pseudonym.html"><a href="pseudonym.html"><i class="fa fa-check"></i><b>3</b> Pseudonymization</a><ul>
+<li class="chapter" data-level="3" data-path="pseudonym.html"><a href="pseudonym.html"><i class="fa fa-check"></i><b>3</b> Pseudonymization</a>
+<ul>
 <li class="chapter" data-level="3.1" data-path="pseudonym.html"><a href="pseudonym.html#objectives-1"><i class="fa fa-check"></i><b>3.1</b> Objectives</a></li>
-<li class="chapter" data-level="3.2" data-path="pseudonym.html"><a href="pseudonym.html#background-1"><i class="fa fa-check"></i><b>3.2</b> Background</a><ul>
+<li class="chapter" data-level="3.2" data-path="pseudonym.html"><a href="pseudonym.html#background-1"><i class="fa fa-check"></i><b>3.2</b> Background</a>
+<ul>
 <li class="chapter" data-level="3.2.1" data-path="pseudonym.html"><a href="pseudonym.html#disclosure"><i class="fa fa-check"></i><b>3.2.1</b> Disclosure</a></li>
 <li class="chapter" data-level="3.2.2" data-path="pseudonym.html"><a href="pseudonym.html#identifiers"><i class="fa fa-check"></i><b>3.2.2</b> Identifiers</a></li>
 <li class="chapter" data-level="3.2.3" data-path="pseudonym.html"><a href="pseudonym.html#k-anonymity"><i class="fa fa-check"></i><b>3.2.3</b> <em>k</em>-anonymity</a></li>
@@ -179,9 +187,9 @@ code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warni
           <div class="page-inner">
 
             <section class="normal" id="section-">
-<div id="pseudonym" class="section level1 hasAnchor">
+<div id="pseudonym" class="section level1 hasAnchor" number="3">
 <h1><span class="header-section-number">Chapter 3</span> Pseudonymization<a href="pseudonym.html#pseudonym" class="anchor-section" aria-label="Anchor link to header"></a></h1>
-<div id="objectives-1" class="section level2 hasAnchor">
+<div id="objectives-1" class="section level2 hasAnchor" number="3.1">
 <h2><span class="header-section-number">3.1</span> Objectives<a href="pseudonym.html#objectives-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>Learn to:</p>
 <ul>
@@ -191,9 +199,9 @@ risk</li>
 <li>ensure that a final dataset meets all data-sharing requirements</li>
 </ul>
 </div>
-<div id="background-1" class="section level2 hasAnchor">
+<div id="background-1" class="section level2 hasAnchor" number="3.2">
 <h2><span class="header-section-number">3.2</span> Background<a href="pseudonym.html#background-1" class="anchor-section" aria-label="Anchor link to header"></a></h2>
-<div id="disclosure" class="section level3 hasAnchor">
+<div id="disclosure" class="section level3 hasAnchor" number="3.2.1">
 <h3><span class="header-section-number">3.2.1</span> Disclosure<a href="pseudonym.html#disclosure" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>When a person or organization recognizes or learns something that they did not
 already know about another identifiable person or organization through released
@@ -205,7 +213,7 @@ recognizes a unique or particular combination of data values)</li>
 registers, electoral rolls, data from specialized firms)</li>
 </ul>
 </div>
-<div id="identifiers" class="section level3 hasAnchor">
+<div id="identifiers" class="section level3 hasAnchor" number="3.2.2">
 <h3><span class="header-section-number">3.2.2</span> Identifiers<a href="pseudonym.html#identifiers" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p><strong>Direct identifiers:</strong> variables that unambiguously reveal a person’s identity
 (e.g. name, passport number, phone number, physical address, email address)</p>
@@ -215,7 +223,7 @@ status, occupation). Note potential for elevated identifiability risk from
 extreme values of continuous variables (height, income, number of children, land
 area).</p>
 </div>
-<div id="k-anonymity" class="section level3 hasAnchor">
+<div id="k-anonymity" class="section level3 hasAnchor" number="3.2.3">
 <h3><span class="header-section-number">3.2.3</span> <em>k</em>-anonymity<a href="pseudonym.html#k-anonymity" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>A measure of re-identification risk for discrete variables. <em>k</em> = the number of
 records in a dataset containing a certain combination of indirect identifiers
@@ -223,7 +231,7 @@ records in a dataset containing a certain combination of indirect identifiers
 Higher value of <em>k</em> means lower re-identification risk, because higher <em>k</em> means
 more records in the dataset with the same combination of indirect identifiers.</p>
 </div>
-<div id="pseudonymization" class="section level3 hasAnchor">
+<div id="pseudonymization" class="section level3 hasAnchor" number="3.2.4">
 <h3><span class="header-section-number">3.2.4</span> Pseudonymization<a href="pseudonym.html#pseudonymization" class="anchor-section" aria-label="Anchor link to header"></a></h3>
 <p>Methods used to transform a dataset to achieve an “acceptable level” of
 re-identification / disclosure risk. Two types of methods:</p>
@@ -233,7 +241,7 @@ or values) or aggregation (aggregate levels of a variable to reduce uniqueness)<
 desired statistical properties</p>
 </div>
 </div>
-<div id="typical-workflow" class="section level2 hasAnchor">
+<div id="typical-workflow" class="section level2 hasAnchor" number="3.3">
 <h2><span class="header-section-number">3.3</span> Typical workflow<a href="pseudonym.html#typical-workflow" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <ol style="list-style-type: decimal">
 <li>Select a threshold value of <em>k</em>-anonymity that will be the minimum
@@ -262,18 +270,18 @@ aggregate, withhold).</li>
 data-sharing requirements.</li>
 </ol>
 </div>
-<div id="exercise" class="section level2 hasAnchor">
+<div id="exercise" class="section level2 hasAnchor" number="3.4">
 <h2><span class="header-section-number">3.4</span> Exercise<a href="pseudonym.html#exercise" class="anchor-section" aria-label="Anchor link to header"></a></h2>
 <p>This repository includes an example dataset based on a mortality survey (see
 section <a href="index.html#setup">1.1 Setup</a> for data download links). Load the dataset and
 pre-prepared data dictionary using the example code below, and use them to work
 through the pseudonymization workflow described above.</p>
-<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb30-1"><a href="pseudonym.html#cb30-1"></a><span class="kw">library</span>(rio)</span>
-<span id="cb30-2"><a href="pseudonym.html#cb30-2"></a><span class="kw">library</span>(here)</span>
-<span id="cb30-3"><a href="pseudonym.html#cb30-3"></a></span>
-<span id="cb30-4"><a href="pseudonym.html#cb30-4"></a><span class="co"># import dataset and prepared data dictionary</span></span>
-<span id="cb30-5"><a href="pseudonym.html#cb30-5"></a>dat &lt;-<span class="st"> </span>rio<span class="op">::</span><span class="kw">import</span>(<span class="kw">here</span>(<span class="st">&quot;data/mortality_survey_simple_data.xlsx&quot;</span>), <span class="dt">setclass =</span> <span class="st">&quot;tbl&quot;</span>)</span>
-<span id="cb30-6"><a href="pseudonym.html#cb30-6"></a>dict &lt;-<span class="st"> </span>rio<span class="op">::</span><span class="kw">import</span>(<span class="kw">here</span>(<span class="st">&quot;data/mortality_survey_simple_dict_pre_pseudonym.xlsx&quot;</span>), <span class="dt">setclass =</span> <span class="st">&quot;tbl&quot;</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb19"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb19-1"><a href="pseudonym.html#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(rio)</span>
+<span id="cb19-2"><a href="pseudonym.html#cb19-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(here)</span>
+<span id="cb19-3"><a href="pseudonym.html#cb19-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-4"><a href="pseudonym.html#cb19-4" aria-hidden="true" tabindex="-1"></a><span class="co"># import dataset and prepared data dictionary</span></span>
+<span id="cb19-5"><a href="pseudonym.html#cb19-5" aria-hidden="true" tabindex="-1"></a>dat <span class="ot">&lt;-</span> rio<span class="sc">::</span><span class="fu">import</span>(<span class="fu">here</span>(<span class="st">&quot;data/mortality_survey_simple_data.xlsx&quot;</span>), <span class="at">setclass =</span> <span class="st">&quot;tbl&quot;</span>)</span>
+<span id="cb19-6"><a href="pseudonym.html#cb19-6" aria-hidden="true" tabindex="-1"></a>dict <span class="ot">&lt;-</span> rio<span class="sc">::</span><span class="fu">import</span>(<span class="fu">here</span>(<span class="st">&quot;data/mortality_survey_simple_dict_pre_pseudonym.xlsx&quot;</span>), <span class="at">setclass =</span> <span class="st">&quot;tbl&quot;</span>)</span></code></pre></div>
 <p>As you make your way through the pseudonymization workflow, answer the following
 questions:</p>
 <p><strong>(1) Which variables, if any, did you assess as either direct or indirect
@@ -289,48 +297,44 @@ were potentially identifying? If so, what actions did you take?</strong></p>
 were there any combinations of indirect identifiers yielding values of <em>k</em> below
 your pre-selected threshold? If so, what action did you take?</strong></p>
 <details>
-<p><summary style="color:#b30000">
+<summary style="color:#b30000">
 <b>See proposed workflow</b>
-</summary></p>
+</summary>
 <p><strong>Load required packages and read data/dictionary</strong></p>
-<div class="sourceCode" id="cb31"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb31-1"><a href="pseudonym.html#cb31-1"></a><span class="co"># ensures the package &quot;pacman&quot; is installed</span></span>
-<span id="cb31-2"><a href="pseudonym.html#cb31-2"></a><span class="cf">if</span> (<span class="op">!</span><span class="kw">require</span>(<span class="st">&quot;pacman&quot;</span>)) <span class="kw">install.packages</span>(<span class="st">&quot;pacman&quot;</span>)</span></code></pre></div>
-<pre><code>## Warning in library(package, lib.loc = lib.loc, character.only = TRUE,
-## logical.return = TRUE, : there is no package called &#39;pacman&#39;</code></pre>
-<pre><code>## 
-## The downloaded binary packages are in
-##  /var/folders/24/8k48jl6d249_n_qfxwsl6xvm0000gn/T//Rtmp3mKZMz/downloaded_packages</code></pre>
-<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb34-1"><a href="pseudonym.html#cb34-1"></a><span class="co"># load/install packages from CRAN</span></span>
-<span id="cb34-2"><a href="pseudonym.html#cb34-2"></a>pacman<span class="op">::</span><span class="kw">p_load</span>(</span>
-<span id="cb34-3"><a href="pseudonym.html#cb34-3"></a>  </span>
-<span id="cb34-4"><a href="pseudonym.html#cb34-4"></a>  <span class="co"># project and file management</span></span>
-<span id="cb34-5"><a href="pseudonym.html#cb34-5"></a>  here,     <span class="co"># file paths relative to R project root folder</span></span>
-<span id="cb34-6"><a href="pseudonym.html#cb34-6"></a>  rio,      <span class="co"># import/export of many types of data</span></span>
-<span id="cb34-7"><a href="pseudonym.html#cb34-7"></a>  </span>
-<span id="cb34-8"><a href="pseudonym.html#cb34-8"></a>  <span class="co"># general data management</span></span>
-<span id="cb34-9"><a href="pseudonym.html#cb34-9"></a>  dplyr    <span class="co"># data wrangling</span></span>
-<span id="cb34-10"><a href="pseudonym.html#cb34-10"></a>)</span>
-<span id="cb34-11"><a href="pseudonym.html#cb34-11"></a></span>
-<span id="cb34-12"><a href="pseudonym.html#cb34-12"></a><span class="co"># Load/install packages from GitHub</span></span>
-<span id="cb34-13"><a href="pseudonym.html#cb34-13"></a>pacman<span class="op">::</span><span class="kw">p_load_gh</span>(</span>
-<span id="cb34-14"><a href="pseudonym.html#cb34-14"></a>  <span class="co"># data dictionary</span></span>
-<span id="cb34-15"><a href="pseudonym.html#cb34-15"></a>  <span class="st">&quot;epicentre-msf/datadict&quot;</span>  <span class="co"># create/validate data dictionary</span></span>
-<span id="cb34-16"><a href="pseudonym.html#cb34-16"></a>)</span>
-<span id="cb34-17"><a href="pseudonym.html#cb34-17"></a></span>
-<span id="cb34-18"><a href="pseudonym.html#cb34-18"></a><span class="co"># read/prep dictionary</span></span>
-<span id="cb34-19"><a href="pseudonym.html#cb34-19"></a>odk_survey &lt;-<span class="st"> </span>rio<span class="op">::</span><span class="kw">import</span>(<span class="kw">here</span>(<span class="st">&quot;data/mortality_survey_simple_kobo.xlsx&quot;</span>), <span class="dt">sheet =</span> <span class="st">&quot;survey&quot;</span>, <span class="dt">setclass =</span> <span class="st">&quot;tbl&quot;</span>)</span>
-<span id="cb34-20"><a href="pseudonym.html#cb34-20"></a>odk_choices &lt;-<span class="st"> </span>rio<span class="op">::</span><span class="kw">import</span>(<span class="kw">here</span>(<span class="st">&quot;data/mortality_survey_simple_kobo.xlsx&quot;</span>), <span class="dt">sheet =</span> <span class="st">&quot;choices&quot;</span>, <span class="dt">setclass =</span> <span class="st">&quot;tbl&quot;</span>)</span>
-<span id="cb34-21"><a href="pseudonym.html#cb34-21"></a></span>
-<span id="cb34-22"><a href="pseudonym.html#cb34-22"></a>dict &lt;-<span class="st"> </span>datadict<span class="op">::</span><span class="kw">dict_from_odk</span>(odk_survey, odk_choices)</span>
-<span id="cb34-23"><a href="pseudonym.html#cb34-23"></a></span>
-<span id="cb34-24"><a href="pseudonym.html#cb34-24"></a><span class="co"># read dataset (and reclass columns according to dictionary)</span></span>
-<span id="cb34-25"><a href="pseudonym.html#cb34-25"></a>dat &lt;-<span class="st"> </span>rio<span class="op">::</span><span class="kw">import</span>(<span class="kw">here</span>(<span class="st">&quot;data/mortality_survey_simple_data.xlsx&quot;</span>), <span class="dt">setclass =</span> <span class="st">&quot;tbl&quot;</span>) <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb34-26"><a href="pseudonym.html#cb34-26"></a><span class="st">  </span>datadict<span class="op">::</span><span class="kw">reclass_data</span>(dict)</span></code></pre></div>
-<div id="select-a-threshold-value-of-k-anonymity" class="section level4 hasAnchor">
+<div class="sourceCode" id="cb20"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb20-1"><a href="pseudonym.html#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co"># ensures the package &quot;pacman&quot; is installed</span></span>
+<span id="cb20-2"><a href="pseudonym.html#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="sc">!</span><span class="fu">require</span>(<span class="st">&quot;pacman&quot;</span>)) <span class="fu">install.packages</span>(<span class="st">&quot;pacman&quot;</span>)</span>
+<span id="cb20-3"><a href="pseudonym.html#cb20-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-4"><a href="pseudonym.html#cb20-4" aria-hidden="true" tabindex="-1"></a><span class="co"># load/install packages from CRAN</span></span>
+<span id="cb20-5"><a href="pseudonym.html#cb20-5" aria-hidden="true" tabindex="-1"></a>pacman<span class="sc">::</span><span class="fu">p_load</span>(</span>
+<span id="cb20-6"><a href="pseudonym.html#cb20-6" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb20-7"><a href="pseudonym.html#cb20-7" aria-hidden="true" tabindex="-1"></a>  <span class="co"># project and file management</span></span>
+<span id="cb20-8"><a href="pseudonym.html#cb20-8" aria-hidden="true" tabindex="-1"></a>  here,     <span class="co"># file paths relative to R project root folder</span></span>
+<span id="cb20-9"><a href="pseudonym.html#cb20-9" aria-hidden="true" tabindex="-1"></a>  rio,      <span class="co"># import/export of many types of data</span></span>
+<span id="cb20-10"><a href="pseudonym.html#cb20-10" aria-hidden="true" tabindex="-1"></a>  </span>
+<span id="cb20-11"><a href="pseudonym.html#cb20-11" aria-hidden="true" tabindex="-1"></a>  <span class="co"># general data management</span></span>
+<span id="cb20-12"><a href="pseudonym.html#cb20-12" aria-hidden="true" tabindex="-1"></a>  dplyr    <span class="co"># data wrangling</span></span>
+<span id="cb20-13"><a href="pseudonym.html#cb20-13" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb20-14"><a href="pseudonym.html#cb20-14" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-15"><a href="pseudonym.html#cb20-15" aria-hidden="true" tabindex="-1"></a><span class="co"># Load/install packages from GitHub</span></span>
+<span id="cb20-16"><a href="pseudonym.html#cb20-16" aria-hidden="true" tabindex="-1"></a>pacman<span class="sc">::</span><span class="fu">p_load_gh</span>(</span>
+<span id="cb20-17"><a href="pseudonym.html#cb20-17" aria-hidden="true" tabindex="-1"></a>  <span class="co"># data dictionary</span></span>
+<span id="cb20-18"><a href="pseudonym.html#cb20-18" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;epicentre-msf/datadict&quot;</span>  <span class="co"># create/validate data dictionary</span></span>
+<span id="cb20-19"><a href="pseudonym.html#cb20-19" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb20-20"><a href="pseudonym.html#cb20-20" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-21"><a href="pseudonym.html#cb20-21" aria-hidden="true" tabindex="-1"></a><span class="co"># read/prep dictionary</span></span>
+<span id="cb20-22"><a href="pseudonym.html#cb20-22" aria-hidden="true" tabindex="-1"></a>odk_survey <span class="ot">&lt;-</span> rio<span class="sc">::</span><span class="fu">import</span>(<span class="fu">here</span>(<span class="st">&quot;data/mortality_survey_simple_kobo.xlsx&quot;</span>), <span class="at">sheet =</span> <span class="st">&quot;survey&quot;</span>, <span class="at">setclass =</span> <span class="st">&quot;tbl&quot;</span>)</span>
+<span id="cb20-23"><a href="pseudonym.html#cb20-23" aria-hidden="true" tabindex="-1"></a>odk_choices <span class="ot">&lt;-</span> rio<span class="sc">::</span><span class="fu">import</span>(<span class="fu">here</span>(<span class="st">&quot;data/mortality_survey_simple_kobo.xlsx&quot;</span>), <span class="at">sheet =</span> <span class="st">&quot;choices&quot;</span>, <span class="at">setclass =</span> <span class="st">&quot;tbl&quot;</span>)</span>
+<span id="cb20-24"><a href="pseudonym.html#cb20-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-25"><a href="pseudonym.html#cb20-25" aria-hidden="true" tabindex="-1"></a>dict <span class="ot">&lt;-</span> datadict<span class="sc">::</span><span class="fu">dict_from_odk</span>(odk_survey, odk_choices)</span>
+<span id="cb20-26"><a href="pseudonym.html#cb20-26" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb20-27"><a href="pseudonym.html#cb20-27" aria-hidden="true" tabindex="-1"></a><span class="co"># read dataset (and reclass columns according to dictionary)</span></span>
+<span id="cb20-28"><a href="pseudonym.html#cb20-28" aria-hidden="true" tabindex="-1"></a>dat <span class="ot">&lt;-</span> rio<span class="sc">::</span><span class="fu">import</span>(<span class="fu">here</span>(<span class="st">&quot;data/mortality_survey_simple_data.xlsx&quot;</span>), <span class="at">setclass =</span> <span class="st">&quot;tbl&quot;</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb20-29"><a href="pseudonym.html#cb20-29" aria-hidden="true" tabindex="-1"></a>  datadict<span class="sc">::</span><span class="fu">reclass_data</span>(dict)</span></code></pre></div>
+<div id="select-a-threshold-value-of-k-anonymity" class="section level4 hasAnchor" number="3.4.0.1">
 <h4><span class="header-section-number">3.4.0.1</span> Select a threshold value of <em>k</em>-anonymity<a href="pseudonym.html#select-a-threshold-value-of-k-anonymity" class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>k = 5</p>
 </div>
-<div id="assess-re-identification-risk-of-each-variable-e.g.-direct-identifier-indirect-identifier-non-identifying." class="section level4 hasAnchor">
+<div id="assess-re-identification-risk-of-each-variable-e.g.-direct-identifier-indirect-identifier-non-identifying." class="section level4 hasAnchor" number="3.4.0.2">
 <h4><span class="header-section-number">3.4.0.2</span> Assess re-identification risk of each variable (e.g. direct identifier, indirect identifier, non-identifying).<a href="pseudonym.html#assess-re-identification-risk-of-each-variable-e.g.-direct-identifier-indirect-identifier-non-identifying." class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>Indirect identifiers:</p>
 <ul>
@@ -348,138 +352,138 @@ your pre-selected threshold? If so, what action did you take?</strong></p>
 <li><code>date_born</code></li>
 </ul>
 </div>
-<div id="assess-utility-of-each-variable-for-analysis-e.g.-high-low-uncertain." class="section level4 hasAnchor">
+<div id="assess-utility-of-each-variable-for-analysis-e.g.-high-low-uncertain." class="section level4 hasAnchor" number="3.4.0.3">
 <h4><span class="header-section-number">3.4.0.3</span> Assess utility of each variable for analysis (e.g. high, low, uncertain).<a href="pseudonym.html#assess-utility-of-each-variable-for-analysis-e.g.-high-low-uncertain." class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>Most variables of ‘high’ utility for analysis</p>
 </div>
-<div id="withhold-variables-classified-as-direct-identifiers.-consider-withholding-other-variables-with-low-utility-and-non-zero-re-identification-risk." class="section level4 hasAnchor">
+<div id="withhold-variables-classified-as-direct-identifiers.-consider-withholding-other-variables-with-low-utility-and-non-zero-re-identification-risk." class="section level4 hasAnchor" number="3.4.0.4">
 <h4><span class="header-section-number">3.4.0.4</span> Withhold variables classified as direct identifiers. Consider withholding other variables with low utility and non-zero re-identification risk.<a href="pseudonym.html#withhold-variables-classified-as-direct-identifiers.-consider-withholding-other-variables-with-low-utility-and-non-zero-re-identification-risk." class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>No direct identifiers</p>
 </div>
-<div id="merge-groups-of-related-indirect-identifiers-where-possible." class="section level4 hasAnchor">
+<div id="merge-groups-of-related-indirect-identifiers-where-possible." class="section level4 hasAnchor" number="3.4.0.5">
 <h4><span class="header-section-number">3.4.0.5</span> Merge groups of related indirect identifiers, where possible.<a href="pseudonym.html#merge-groups-of-related-indirect-identifiers-where-possible." class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>The most obvious group of related variables to merge are the age-related
 variables, <code>age_under_one</code>, <code>age_months</code>, and <code>age_years</code>. We’ll also merge all
 of the date variables (except <code>date_death</code>) and related indicators into a single
 new derived variable <code>exposure</code>, the number of days that a given person was at
 risk of mortality.</p>
-<div class="sourceCode" id="cb35"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb35-1"><a href="pseudonym.html#cb35-1"></a><span class="co">## merge age variables ---------------------------------------------------------</span></span>
-<span id="cb35-2"><a href="pseudonym.html#cb35-2"></a>age_group_levels &lt;-<span class="st"> </span><span class="kw">c</span>(<span class="st">&quot;0-2&quot;</span>, <span class="st">&quot;3-14&quot;</span>, <span class="st">&quot;15-29&quot;</span>, <span class="st">&quot;30-44&quot;</span>, <span class="st">&quot;45+&quot;</span>)</span>
-<span id="cb35-3"><a href="pseudonym.html#cb35-3"></a></span>
-<span id="cb35-4"><a href="pseudonym.html#cb35-4"></a>dat &lt;-<span class="st"> </span>dat <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb35-5"><a href="pseudonym.html#cb35-5"></a><span class="st">  </span><span class="kw">mutate</span>(</span>
-<span id="cb35-6"><a href="pseudonym.html#cb35-6"></a>    <span class="dt">age_group =</span> <span class="kw">case_when</span>(</span>
-<span id="cb35-7"><a href="pseudonym.html#cb35-7"></a>      age_under_one <span class="op">==</span><span class="st"> &quot;Yes&quot;</span> <span class="op">~</span><span class="st"> &quot;0-2&quot;</span>,</span>
-<span id="cb35-8"><a href="pseudonym.html#cb35-8"></a>      age_years <span class="op">&lt;=</span><span class="st"> </span><span class="dv">2</span> <span class="op">~</span><span class="st"> &quot;0-2&quot;</span>,</span>
-<span id="cb35-9"><a href="pseudonym.html#cb35-9"></a>      age_years <span class="op">&gt;=</span><span class="st"> </span><span class="dv">3</span> <span class="op">&amp;</span><span class="st"> </span>age_years <span class="op">&lt;=</span><span class="st"> </span><span class="dv">14</span> <span class="op">~</span><span class="st"> &quot;3-14&quot;</span>,</span>
-<span id="cb35-10"><a href="pseudonym.html#cb35-10"></a>      age_years <span class="op">&gt;=</span><span class="st"> </span><span class="dv">15</span> <span class="op">&amp;</span><span class="st"> </span>age_years <span class="op">&lt;=</span><span class="st"> </span><span class="dv">29</span> <span class="op">~</span><span class="st"> &quot;15-29&quot;</span>,</span>
-<span id="cb35-11"><a href="pseudonym.html#cb35-11"></a>      age_years <span class="op">&gt;=</span><span class="st"> </span><span class="dv">30</span> <span class="op">&amp;</span><span class="st"> </span>age_years <span class="op">&lt;=</span><span class="st"> </span><span class="dv">44</span> <span class="op">~</span><span class="st"> &quot;30-44&quot;</span>,</span>
-<span id="cb35-12"><a href="pseudonym.html#cb35-12"></a>      age_years <span class="op">&gt;=</span><span class="st"> </span><span class="dv">45</span> <span class="op">~</span><span class="st"> &quot;45+&quot;</span></span>
-<span id="cb35-13"><a href="pseudonym.html#cb35-13"></a>    ),</span>
-<span id="cb35-14"><a href="pseudonym.html#cb35-14"></a>    <span class="dt">.after =</span> age_years,</span>
-<span id="cb35-15"><a href="pseudonym.html#cb35-15"></a>    <span class="dt">age_group =</span> <span class="kw">factor</span>(age_group, <span class="dt">levels =</span> age_group_levels)</span>
-<span id="cb35-16"><a href="pseudonym.html#cb35-16"></a>  )</span>
-<span id="cb35-17"><a href="pseudonym.html#cb35-17"></a></span>
-<span id="cb35-18"><a href="pseudonym.html#cb35-18"></a><span class="co"># withhold old age variables</span></span>
-<span id="cb35-19"><a href="pseudonym.html#cb35-19"></a>dat<span class="op">$</span>age_under_one &lt;-<span class="st"> </span><span class="ot">NA_character_</span></span>
-<span id="cb35-20"><a href="pseudonym.html#cb35-20"></a>dat<span class="op">$</span>age_months &lt;-<span class="st"> </span><span class="ot">NA_real_</span></span>
-<span id="cb35-21"><a href="pseudonym.html#cb35-21"></a>dat<span class="op">$</span>age_years &lt;-<span class="st"> </span><span class="ot">NA_real_</span></span>
-<span id="cb35-22"><a href="pseudonym.html#cb35-22"></a></span>
-<span id="cb35-23"><a href="pseudonym.html#cb35-23"></a>vars_withhold &lt;-<span class="st"> </span><span class="kw">c</span>(</span>
-<span id="cb35-24"><a href="pseudonym.html#cb35-24"></a>  <span class="st">&quot;age_under_one&quot;</span>,</span>
-<span id="cb35-25"><a href="pseudonym.html#cb35-25"></a>  <span class="st">&quot;age_months&quot;</span>,</span>
-<span id="cb35-26"><a href="pseudonym.html#cb35-26"></a>  <span class="st">&quot;age_years&quot;</span></span>
-<span id="cb35-27"><a href="pseudonym.html#cb35-27"></a>)</span>
-<span id="cb35-28"><a href="pseudonym.html#cb35-28"></a></span>
-<span id="cb35-29"><a href="pseudonym.html#cb35-29"></a>dict<span class="op">$</span>status[dict<span class="op">$</span>variable_name <span class="op">%in%</span><span class="st"> </span>vars_withhold] &lt;-<span class="st"> &quot;withheld&quot;</span></span>
-<span id="cb35-30"><a href="pseudonym.html#cb35-30"></a></span>
-<span id="cb35-31"><a href="pseudonym.html#cb35-31"></a><span class="co"># add new age var to dictionary</span></span>
-<span id="cb35-32"><a href="pseudonym.html#cb35-32"></a>age_group_choices &lt;-<span class="st"> </span>datadict<span class="op">::</span><span class="kw">generate_coded_options</span>(age_group_levels)</span>
-<span id="cb35-33"><a href="pseudonym.html#cb35-33"></a></span>
-<span id="cb35-34"><a href="pseudonym.html#cb35-34"></a>dict &lt;-<span class="st"> </span>dict <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb35-35"><a href="pseudonym.html#cb35-35"></a><span class="st">  </span><span class="kw">add_row</span>(</span>
-<span id="cb35-36"><a href="pseudonym.html#cb35-36"></a>    <span class="dt">variable_name =</span> <span class="st">&quot;age_group&quot;</span>,</span>
-<span id="cb35-37"><a href="pseudonym.html#cb35-37"></a>    <span class="dt">short_label =</span> <span class="st">&quot;Age group (downscaled from age variables `age_months` and `age_years`)&quot;</span>,</span>
-<span id="cb35-38"><a href="pseudonym.html#cb35-38"></a>    <span class="dt">type =</span> <span class="st">&quot;Coded list&quot;</span>,</span>
-<span id="cb35-39"><a href="pseudonym.html#cb35-39"></a>    <span class="dt">choices =</span> age_group_choices,</span>
-<span id="cb35-40"><a href="pseudonym.html#cb35-40"></a>    <span class="dt">origin =</span> <span class="st">&quot;derived&quot;</span>,</span>
-<span id="cb35-41"><a href="pseudonym.html#cb35-41"></a>    <span class="dt">status =</span> <span class="st">&quot;shared&quot;</span>,</span>
-<span id="cb35-42"><a href="pseudonym.html#cb35-42"></a>    <span class="dt">.after =</span> <span class="kw">which</span>(.<span class="op">$</span>variable_name <span class="op">==</span><span class="st"> &quot;age_years&quot;</span>)</span>
-<span id="cb35-43"><a href="pseudonym.html#cb35-43"></a>  )</span>
-<span id="cb35-44"><a href="pseudonym.html#cb35-44"></a></span>
-<span id="cb35-45"><a href="pseudonym.html#cb35-45"></a><span class="co">## merge date variables --------------------------------------------------------</span></span>
-<span id="cb35-46"><a href="pseudonym.html#cb35-46"></a>dat &lt;-<span class="st"> </span>dat <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb35-47"><a href="pseudonym.html#cb35-47"></a><span class="st">  </span><span class="kw">mutate</span>(</span>
-<span id="cb35-48"><a href="pseudonym.html#cb35-48"></a>    <span class="dt">date_min =</span> <span class="kw">as.Date</span>(<span class="st">&quot;2020-07-01&quot;</span>)</span>
-<span id="cb35-49"><a href="pseudonym.html#cb35-49"></a>  ) <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb35-50"><a href="pseudonym.html#cb35-50"></a><span class="st">  </span><span class="kw">mutate</span>(</span>
-<span id="cb35-51"><a href="pseudonym.html#cb35-51"></a>    <span class="dt">date_start =</span> <span class="kw">as.Date</span>(<span class="kw">apply</span>(<span class="kw">select</span>(., date_min, date_arrived, date_born), <span class="dv">1</span>, max, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>)),</span>
-<span id="cb35-52"><a href="pseudonym.html#cb35-52"></a>    <span class="dt">date_end =</span> <span class="kw">as.Date</span>(<span class="kw">apply</span>(<span class="kw">select</span>(., date, date_departed), <span class="dv">1</span>, max, <span class="dt">na.rm =</span> <span class="ot">TRUE</span>)),</span>
-<span id="cb35-53"><a href="pseudonym.html#cb35-53"></a>    <span class="dt">exposure =</span> <span class="kw">as.integer</span>(date_end <span class="op">-</span><span class="st"> </span>date_start),</span>
-<span id="cb35-54"><a href="pseudonym.html#cb35-54"></a>    <span class="dt">.after =</span> date_died</span>
-<span id="cb35-55"><a href="pseudonym.html#cb35-55"></a>  ) <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb35-56"><a href="pseudonym.html#cb35-56"></a><span class="st">  </span><span class="kw">select</span>(<span class="op">-</span>date_min, <span class="op">-</span>date_start, <span class="op">-</span>date_end)</span>
-<span id="cb35-57"><a href="pseudonym.html#cb35-57"></a></span>
-<span id="cb35-58"><a href="pseudonym.html#cb35-58"></a><span class="co"># withhold old date variables (and related indicators)</span></span>
-<span id="cb35-59"><a href="pseudonym.html#cb35-59"></a>dat<span class="op">$</span>born &lt;-<span class="st"> </span><span class="ot">NA_character_</span></span>
-<span id="cb35-60"><a href="pseudonym.html#cb35-60"></a>dat<span class="op">$</span>date_born &lt;-<span class="st"> </span><span class="kw">as.Date</span>(<span class="ot">NA_character_</span>)</span>
-<span id="cb35-61"><a href="pseudonym.html#cb35-61"></a>dat<span class="op">$</span>arrived &lt;-<span class="st"> </span><span class="ot">NA_character_</span></span>
-<span id="cb35-62"><a href="pseudonym.html#cb35-62"></a>dat<span class="op">$</span>date_arrived &lt;-<span class="st"> </span><span class="kw">as.Date</span>(<span class="ot">NA_character_</span>)</span>
-<span id="cb35-63"><a href="pseudonym.html#cb35-63"></a>dat<span class="op">$</span>departed &lt;-<span class="st"> </span><span class="ot">NA_character_</span></span>
-<span id="cb35-64"><a href="pseudonym.html#cb35-64"></a>dat<span class="op">$</span>date_departed &lt;-<span class="st"> </span><span class="kw">as.Date</span>(<span class="ot">NA_character_</span>)</span>
-<span id="cb35-65"><a href="pseudonym.html#cb35-65"></a></span>
-<span id="cb35-66"><a href="pseudonym.html#cb35-66"></a>vars_withhold &lt;-<span class="st"> </span><span class="kw">c</span>(</span>
-<span id="cb35-67"><a href="pseudonym.html#cb35-67"></a>  <span class="st">&quot;born&quot;</span>,</span>
-<span id="cb35-68"><a href="pseudonym.html#cb35-68"></a>  <span class="st">&quot;date_born&quot;</span>,</span>
-<span id="cb35-69"><a href="pseudonym.html#cb35-69"></a>  <span class="st">&quot;arrived&quot;</span>,</span>
-<span id="cb35-70"><a href="pseudonym.html#cb35-70"></a>  <span class="st">&quot;date_arrived&quot;</span>,</span>
-<span id="cb35-71"><a href="pseudonym.html#cb35-71"></a>  <span class="st">&quot;departed&quot;</span>,</span>
-<span id="cb35-72"><a href="pseudonym.html#cb35-72"></a>  <span class="st">&quot;date_departed&quot;</span></span>
-<span id="cb35-73"><a href="pseudonym.html#cb35-73"></a>)</span>
-<span id="cb35-74"><a href="pseudonym.html#cb35-74"></a></span>
-<span id="cb35-75"><a href="pseudonym.html#cb35-75"></a>dict<span class="op">$</span>status[dict<span class="op">$</span>variable_name <span class="op">%in%</span><span class="st"> </span>vars_withhold] &lt;-<span class="st"> &quot;withheld&quot;</span></span>
-<span id="cb35-76"><a href="pseudonym.html#cb35-76"></a></span>
-<span id="cb35-77"><a href="pseudonym.html#cb35-77"></a><span class="co"># add new exposure var to dictionary</span></span>
-<span id="cb35-78"><a href="pseudonym.html#cb35-78"></a>dict &lt;-<span class="st"> </span>dict <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb35-79"><a href="pseudonym.html#cb35-79"></a><span class="st">  </span><span class="kw">add_row</span>(</span>
-<span id="cb35-80"><a href="pseudonym.html#cb35-80"></a>    <span class="dt">variable_name =</span> <span class="st">&quot;exposure&quot;</span>,</span>
-<span id="cb35-81"><a href="pseudonym.html#cb35-81"></a>    <span class="dt">short_label =</span> <span class="st">&quot;Exposure period in days (derived from study start date &#39;2020-07-01&#39; and variables `date_born`, `date_arrived`, and `date_departed`)&quot;</span>,</span>
-<span id="cb35-82"><a href="pseudonym.html#cb35-82"></a>    <span class="dt">type =</span> <span class="st">&quot;Numeric&quot;</span>,</span>
-<span id="cb35-83"><a href="pseudonym.html#cb35-83"></a>    <span class="dt">choices =</span> <span class="ot">NA_character_</span>,</span>
-<span id="cb35-84"><a href="pseudonym.html#cb35-84"></a>    <span class="dt">origin =</span> <span class="st">&quot;derived&quot;</span>,</span>
-<span id="cb35-85"><a href="pseudonym.html#cb35-85"></a>    <span class="dt">status =</span> <span class="st">&quot;shared&quot;</span>,</span>
-<span id="cb35-86"><a href="pseudonym.html#cb35-86"></a>    <span class="dt">.after =</span> <span class="kw">which</span>(.<span class="op">$</span>variable_name <span class="op">==</span><span class="st"> &quot;date_died&quot;</span>)</span>
-<span id="cb35-87"><a href="pseudonym.html#cb35-87"></a>  )</span></code></pre></div>
+<div class="sourceCode" id="cb21"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb21-1"><a href="pseudonym.html#cb21-1" aria-hidden="true" tabindex="-1"></a><span class="do">## merge age variables ---------------------------------------------------------</span></span>
+<span id="cb21-2"><a href="pseudonym.html#cb21-2" aria-hidden="true" tabindex="-1"></a>age_group_levels <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="st">&quot;0-2&quot;</span>, <span class="st">&quot;3-14&quot;</span>, <span class="st">&quot;15-29&quot;</span>, <span class="st">&quot;30-44&quot;</span>, <span class="st">&quot;45+&quot;</span>)</span>
+<span id="cb21-3"><a href="pseudonym.html#cb21-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-4"><a href="pseudonym.html#cb21-4" aria-hidden="true" tabindex="-1"></a>dat <span class="ot">&lt;-</span> dat <span class="sc">%&gt;%</span> </span>
+<span id="cb21-5"><a href="pseudonym.html#cb21-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb21-6"><a href="pseudonym.html#cb21-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">age_group =</span> <span class="fu">case_when</span>(</span>
+<span id="cb21-7"><a href="pseudonym.html#cb21-7" aria-hidden="true" tabindex="-1"></a>      age_under_one <span class="sc">==</span> <span class="st">&quot;Yes&quot;</span> <span class="sc">~</span> <span class="st">&quot;0-2&quot;</span>,</span>
+<span id="cb21-8"><a href="pseudonym.html#cb21-8" aria-hidden="true" tabindex="-1"></a>      age_years <span class="sc">&lt;=</span> <span class="dv">2</span> <span class="sc">~</span> <span class="st">&quot;0-2&quot;</span>,</span>
+<span id="cb21-9"><a href="pseudonym.html#cb21-9" aria-hidden="true" tabindex="-1"></a>      age_years <span class="sc">&gt;=</span> <span class="dv">3</span> <span class="sc">&amp;</span> age_years <span class="sc">&lt;=</span> <span class="dv">14</span> <span class="sc">~</span> <span class="st">&quot;3-14&quot;</span>,</span>
+<span id="cb21-10"><a href="pseudonym.html#cb21-10" aria-hidden="true" tabindex="-1"></a>      age_years <span class="sc">&gt;=</span> <span class="dv">15</span> <span class="sc">&amp;</span> age_years <span class="sc">&lt;=</span> <span class="dv">29</span> <span class="sc">~</span> <span class="st">&quot;15-29&quot;</span>,</span>
+<span id="cb21-11"><a href="pseudonym.html#cb21-11" aria-hidden="true" tabindex="-1"></a>      age_years <span class="sc">&gt;=</span> <span class="dv">30</span> <span class="sc">&amp;</span> age_years <span class="sc">&lt;=</span> <span class="dv">44</span> <span class="sc">~</span> <span class="st">&quot;30-44&quot;</span>,</span>
+<span id="cb21-12"><a href="pseudonym.html#cb21-12" aria-hidden="true" tabindex="-1"></a>      age_years <span class="sc">&gt;=</span> <span class="dv">45</span> <span class="sc">~</span> <span class="st">&quot;45+&quot;</span></span>
+<span id="cb21-13"><a href="pseudonym.html#cb21-13" aria-hidden="true" tabindex="-1"></a>    ),</span>
+<span id="cb21-14"><a href="pseudonym.html#cb21-14" aria-hidden="true" tabindex="-1"></a>    <span class="at">.after =</span> age_years,</span>
+<span id="cb21-15"><a href="pseudonym.html#cb21-15" aria-hidden="true" tabindex="-1"></a>    <span class="at">age_group =</span> <span class="fu">factor</span>(age_group, <span class="at">levels =</span> age_group_levels)</span>
+<span id="cb21-16"><a href="pseudonym.html#cb21-16" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb21-17"><a href="pseudonym.html#cb21-17" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-18"><a href="pseudonym.html#cb21-18" aria-hidden="true" tabindex="-1"></a><span class="co"># withhold old age variables</span></span>
+<span id="cb21-19"><a href="pseudonym.html#cb21-19" aria-hidden="true" tabindex="-1"></a>dat<span class="sc">$</span>age_under_one <span class="ot">&lt;-</span> <span class="cn">NA_character_</span></span>
+<span id="cb21-20"><a href="pseudonym.html#cb21-20" aria-hidden="true" tabindex="-1"></a>dat<span class="sc">$</span>age_months <span class="ot">&lt;-</span> <span class="cn">NA_real_</span></span>
+<span id="cb21-21"><a href="pseudonym.html#cb21-21" aria-hidden="true" tabindex="-1"></a>dat<span class="sc">$</span>age_years <span class="ot">&lt;-</span> <span class="cn">NA_real_</span></span>
+<span id="cb21-22"><a href="pseudonym.html#cb21-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-23"><a href="pseudonym.html#cb21-23" aria-hidden="true" tabindex="-1"></a>vars_withhold <span class="ot">&lt;-</span> <span class="fu">c</span>(</span>
+<span id="cb21-24"><a href="pseudonym.html#cb21-24" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;age_under_one&quot;</span>,</span>
+<span id="cb21-25"><a href="pseudonym.html#cb21-25" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;age_months&quot;</span>,</span>
+<span id="cb21-26"><a href="pseudonym.html#cb21-26" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;age_years&quot;</span></span>
+<span id="cb21-27"><a href="pseudonym.html#cb21-27" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb21-28"><a href="pseudonym.html#cb21-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-29"><a href="pseudonym.html#cb21-29" aria-hidden="true" tabindex="-1"></a>dict<span class="sc">$</span>status[dict<span class="sc">$</span>variable_name <span class="sc">%in%</span> vars_withhold] <span class="ot">&lt;-</span> <span class="st">&quot;withheld&quot;</span></span>
+<span id="cb21-30"><a href="pseudonym.html#cb21-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-31"><a href="pseudonym.html#cb21-31" aria-hidden="true" tabindex="-1"></a><span class="co"># add new age var to dictionary</span></span>
+<span id="cb21-32"><a href="pseudonym.html#cb21-32" aria-hidden="true" tabindex="-1"></a>age_group_choices <span class="ot">&lt;-</span> datadict<span class="sc">::</span><span class="fu">generate_coded_options</span>(age_group_levels)</span>
+<span id="cb21-33"><a href="pseudonym.html#cb21-33" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-34"><a href="pseudonym.html#cb21-34" aria-hidden="true" tabindex="-1"></a>dict <span class="ot">&lt;-</span> dict <span class="sc">%&gt;%</span> </span>
+<span id="cb21-35"><a href="pseudonym.html#cb21-35" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_row</span>(</span>
+<span id="cb21-36"><a href="pseudonym.html#cb21-36" aria-hidden="true" tabindex="-1"></a>    <span class="at">variable_name =</span> <span class="st">&quot;age_group&quot;</span>,</span>
+<span id="cb21-37"><a href="pseudonym.html#cb21-37" aria-hidden="true" tabindex="-1"></a>    <span class="at">short_label =</span> <span class="st">&quot;Age group (downscaled from age variables `age_months` and `age_years`)&quot;</span>,</span>
+<span id="cb21-38"><a href="pseudonym.html#cb21-38" aria-hidden="true" tabindex="-1"></a>    <span class="at">type =</span> <span class="st">&quot;Coded list&quot;</span>,</span>
+<span id="cb21-39"><a href="pseudonym.html#cb21-39" aria-hidden="true" tabindex="-1"></a>    <span class="at">choices =</span> age_group_choices,</span>
+<span id="cb21-40"><a href="pseudonym.html#cb21-40" aria-hidden="true" tabindex="-1"></a>    <span class="at">origin =</span> <span class="st">&quot;derived&quot;</span>,</span>
+<span id="cb21-41"><a href="pseudonym.html#cb21-41" aria-hidden="true" tabindex="-1"></a>    <span class="at">status =</span> <span class="st">&quot;shared&quot;</span>,</span>
+<span id="cb21-42"><a href="pseudonym.html#cb21-42" aria-hidden="true" tabindex="-1"></a>    <span class="at">.after =</span> <span class="fu">which</span>(.<span class="sc">$</span>variable_name <span class="sc">==</span> <span class="st">&quot;age_years&quot;</span>)</span>
+<span id="cb21-43"><a href="pseudonym.html#cb21-43" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb21-44"><a href="pseudonym.html#cb21-44" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-45"><a href="pseudonym.html#cb21-45" aria-hidden="true" tabindex="-1"></a><span class="do">## merge date variables --------------------------------------------------------</span></span>
+<span id="cb21-46"><a href="pseudonym.html#cb21-46" aria-hidden="true" tabindex="-1"></a>dat <span class="ot">&lt;-</span> dat <span class="sc">%&gt;%</span> </span>
+<span id="cb21-47"><a href="pseudonym.html#cb21-47" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb21-48"><a href="pseudonym.html#cb21-48" aria-hidden="true" tabindex="-1"></a>    <span class="at">date_min =</span> <span class="fu">as.Date</span>(<span class="st">&quot;2020-07-01&quot;</span>)</span>
+<span id="cb21-49"><a href="pseudonym.html#cb21-49" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span> </span>
+<span id="cb21-50"><a href="pseudonym.html#cb21-50" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb21-51"><a href="pseudonym.html#cb21-51" aria-hidden="true" tabindex="-1"></a>    <span class="at">date_start =</span> <span class="fu">as.Date</span>(<span class="fu">apply</span>(<span class="fu">select</span>(., date_min, date_arrived, date_born), <span class="dv">1</span>, max, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)),</span>
+<span id="cb21-52"><a href="pseudonym.html#cb21-52" aria-hidden="true" tabindex="-1"></a>    <span class="at">date_end =</span> <span class="fu">as.Date</span>(<span class="fu">apply</span>(<span class="fu">select</span>(., date, date_departed), <span class="dv">1</span>, max, <span class="at">na.rm =</span> <span class="cn">TRUE</span>)),</span>
+<span id="cb21-53"><a href="pseudonym.html#cb21-53" aria-hidden="true" tabindex="-1"></a>    <span class="at">exposure =</span> <span class="fu">as.integer</span>(date_end <span class="sc">-</span> date_start),</span>
+<span id="cb21-54"><a href="pseudonym.html#cb21-54" aria-hidden="true" tabindex="-1"></a>    <span class="at">.after =</span> date_died</span>
+<span id="cb21-55"><a href="pseudonym.html#cb21-55" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">%&gt;%</span> </span>
+<span id="cb21-56"><a href="pseudonym.html#cb21-56" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>date_min, <span class="sc">-</span>date_start, <span class="sc">-</span>date_end)</span>
+<span id="cb21-57"><a href="pseudonym.html#cb21-57" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-58"><a href="pseudonym.html#cb21-58" aria-hidden="true" tabindex="-1"></a><span class="co"># withhold old date variables (and related indicators)</span></span>
+<span id="cb21-59"><a href="pseudonym.html#cb21-59" aria-hidden="true" tabindex="-1"></a>dat<span class="sc">$</span>born <span class="ot">&lt;-</span> <span class="cn">NA_character_</span></span>
+<span id="cb21-60"><a href="pseudonym.html#cb21-60" aria-hidden="true" tabindex="-1"></a>dat<span class="sc">$</span>date_born <span class="ot">&lt;-</span> <span class="fu">as.Date</span>(<span class="cn">NA_character_</span>)</span>
+<span id="cb21-61"><a href="pseudonym.html#cb21-61" aria-hidden="true" tabindex="-1"></a>dat<span class="sc">$</span>arrived <span class="ot">&lt;-</span> <span class="cn">NA_character_</span></span>
+<span id="cb21-62"><a href="pseudonym.html#cb21-62" aria-hidden="true" tabindex="-1"></a>dat<span class="sc">$</span>date_arrived <span class="ot">&lt;-</span> <span class="fu">as.Date</span>(<span class="cn">NA_character_</span>)</span>
+<span id="cb21-63"><a href="pseudonym.html#cb21-63" aria-hidden="true" tabindex="-1"></a>dat<span class="sc">$</span>departed <span class="ot">&lt;-</span> <span class="cn">NA_character_</span></span>
+<span id="cb21-64"><a href="pseudonym.html#cb21-64" aria-hidden="true" tabindex="-1"></a>dat<span class="sc">$</span>date_departed <span class="ot">&lt;-</span> <span class="fu">as.Date</span>(<span class="cn">NA_character_</span>)</span>
+<span id="cb21-65"><a href="pseudonym.html#cb21-65" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-66"><a href="pseudonym.html#cb21-66" aria-hidden="true" tabindex="-1"></a>vars_withhold <span class="ot">&lt;-</span> <span class="fu">c</span>(</span>
+<span id="cb21-67"><a href="pseudonym.html#cb21-67" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;born&quot;</span>,</span>
+<span id="cb21-68"><a href="pseudonym.html#cb21-68" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;date_born&quot;</span>,</span>
+<span id="cb21-69"><a href="pseudonym.html#cb21-69" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;arrived&quot;</span>,</span>
+<span id="cb21-70"><a href="pseudonym.html#cb21-70" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;date_arrived&quot;</span>,</span>
+<span id="cb21-71"><a href="pseudonym.html#cb21-71" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;departed&quot;</span>,</span>
+<span id="cb21-72"><a href="pseudonym.html#cb21-72" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;date_departed&quot;</span></span>
+<span id="cb21-73"><a href="pseudonym.html#cb21-73" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb21-74"><a href="pseudonym.html#cb21-74" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-75"><a href="pseudonym.html#cb21-75" aria-hidden="true" tabindex="-1"></a>dict<span class="sc">$</span>status[dict<span class="sc">$</span>variable_name <span class="sc">%in%</span> vars_withhold] <span class="ot">&lt;-</span> <span class="st">&quot;withheld&quot;</span></span>
+<span id="cb21-76"><a href="pseudonym.html#cb21-76" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb21-77"><a href="pseudonym.html#cb21-77" aria-hidden="true" tabindex="-1"></a><span class="co"># add new exposure var to dictionary</span></span>
+<span id="cb21-78"><a href="pseudonym.html#cb21-78" aria-hidden="true" tabindex="-1"></a>dict <span class="ot">&lt;-</span> dict <span class="sc">%&gt;%</span> </span>
+<span id="cb21-79"><a href="pseudonym.html#cb21-79" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_row</span>(</span>
+<span id="cb21-80"><a href="pseudonym.html#cb21-80" aria-hidden="true" tabindex="-1"></a>    <span class="at">variable_name =</span> <span class="st">&quot;exposure&quot;</span>,</span>
+<span id="cb21-81"><a href="pseudonym.html#cb21-81" aria-hidden="true" tabindex="-1"></a>    <span class="at">short_label =</span> <span class="st">&quot;Exposure period in days (derived from study start date &#39;2020-07-01&#39; and variables `date_born`, `date_arrived`, and `date_departed`)&quot;</span>,</span>
+<span id="cb21-82"><a href="pseudonym.html#cb21-82" aria-hidden="true" tabindex="-1"></a>    <span class="at">type =</span> <span class="st">&quot;Numeric&quot;</span>,</span>
+<span id="cb21-83"><a href="pseudonym.html#cb21-83" aria-hidden="true" tabindex="-1"></a>    <span class="at">choices =</span> <span class="cn">NA_character_</span>,</span>
+<span id="cb21-84"><a href="pseudonym.html#cb21-84" aria-hidden="true" tabindex="-1"></a>    <span class="at">origin =</span> <span class="st">&quot;derived&quot;</span>,</span>
+<span id="cb21-85"><a href="pseudonym.html#cb21-85" aria-hidden="true" tabindex="-1"></a>    <span class="at">status =</span> <span class="st">&quot;shared&quot;</span>,</span>
+<span id="cb21-86"><a href="pseudonym.html#cb21-86" aria-hidden="true" tabindex="-1"></a>    <span class="at">.after =</span> <span class="fu">which</span>(.<span class="sc">$</span>variable_name <span class="sc">==</span> <span class="st">&quot;date_died&quot;</span>)</span>
+<span id="cb21-87"><a href="pseudonym.html#cb21-87" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div>
 </div>
-<div id="review-all-unique-values-of-free-text-type-variables-to-ensure-they-do-not-contain-identifying-details.-aggregate-or-withhold-as-necessary." class="section level4 hasAnchor">
+<div id="review-all-unique-values-of-free-text-type-variables-to-ensure-they-do-not-contain-identifying-details.-aggregate-or-withhold-as-necessary." class="section level4 hasAnchor" number="3.4.0.6">
 <h4><span class="header-section-number">3.4.0.6</span> Review all unique values of ‘free-text’ type variables to ensure they do not contain identifying details. Aggregate or withhold as necessary.<a href="pseudonym.html#review-all-unique-values-of-free-text-type-variables-to-ensure-they-do-not-contain-identifying-details.-aggregate-or-withhold-as-necessary." class="anchor-section" aria-label="Anchor link to header"></a></h4>
-<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb36-1"><a href="pseudonym.html#cb36-1"></a>dict <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb36-2"><a href="pseudonym.html#cb36-2"></a><span class="st">  </span><span class="kw">filter</span>(type <span class="op">%in%</span><span class="st"> &quot;Free text&quot;</span>) <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb36-3"><a href="pseudonym.html#cb36-3"></a><span class="st">  </span><span class="kw">select</span>(<span class="dv">1</span><span class="op">:</span><span class="dv">3</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb22"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb22-1"><a href="pseudonym.html#cb22-1" aria-hidden="true" tabindex="-1"></a>dict <span class="sc">%&gt;%</span> </span>
+<span id="cb22-2"><a href="pseudonym.html#cb22-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(type <span class="sc">%in%</span> <span class="st">&quot;Free text&quot;</span>) <span class="sc">%&gt;%</span> </span>
+<span id="cb22-3"><a href="pseudonym.html#cb22-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="dv">1</span><span class="sc">:</span><span class="dv">3</span>)</span></code></pre></div>
 <pre><code>## # A tibble: 3 × 3
 ##   variable_name      short_label                              type     
 ##   &lt;chr&gt;              &lt;chr&gt;                                    &lt;chr&gt;    
 ## 1 source_water_other Please, specify other source of water    Free text
 ## 2 ilness_other       If other illness, specify, please        Free text
 ## 3 cause_death_other  If other cause of death, specify, please Free text</code></pre>
-<div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb38-1"><a href="pseudonym.html#cb38-1"></a>dat <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb38-2"><a href="pseudonym.html#cb38-2"></a><span class="st">  </span><span class="kw">count</span>(source_water_other)</span></code></pre></div>
+<div class="sourceCode" id="cb24"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb24-1"><a href="pseudonym.html#cb24-1" aria-hidden="true" tabindex="-1"></a>dat <span class="sc">%&gt;%</span> </span>
+<span id="cb24-2"><a href="pseudonym.html#cb24-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(source_water_other)</span></code></pre></div>
 <pre><code>## # A tibble: 3 × 2
 ##   source_water_other        n
 ##   &lt;chr&gt;                 &lt;int&gt;
 ## 1 Buying purified water     2
 ## 2 Untreated water wells     2
 ## 3 &lt;NA&gt;                    996</code></pre>
-<div class="sourceCode" id="cb40"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb40-1"><a href="pseudonym.html#cb40-1"></a>dat <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb40-2"><a href="pseudonym.html#cb40-2"></a><span class="st">  </span><span class="kw">count</span>(ilness_other)</span></code></pre></div>
+<div class="sourceCode" id="cb26"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb26-1"><a href="pseudonym.html#cb26-1" aria-hidden="true" tabindex="-1"></a>dat <span class="sc">%&gt;%</span> </span>
+<span id="cb26-2"><a href="pseudonym.html#cb26-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(ilness_other)</span></code></pre></div>
 <pre><code>## # A tibble: 3 × 2
 ##   ilness_other                 n
 ##   &lt;chr&gt;                    &lt;int&gt;
 ## 1 Diarrhea, fever and rash     1
 ## 2 died before                  1
 ## 3 &lt;NA&gt;                       998</code></pre>
-<div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb42-1"><a href="pseudonym.html#cb42-1"></a>dat <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb42-2"><a href="pseudonym.html#cb42-2"></a><span class="st">  </span><span class="kw">count</span>(cause_death_other)</span></code></pre></div>
+<div class="sourceCode" id="cb28"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb28-1"><a href="pseudonym.html#cb28-1" aria-hidden="true" tabindex="-1"></a>dat <span class="sc">%&gt;%</span> </span>
+<span id="cb28-2"><a href="pseudonym.html#cb28-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(cause_death_other)</span></code></pre></div>
 <pre><code>## # A tibble: 4 × 2
 ##   cause_death_other     n
 ##   &lt;chr&gt;             &lt;int&gt;
@@ -491,54 +495,50 @@ risk of mortality.</p>
 identifying. We’ll treat it as indirect identifier along with variable
 <code>source_water</code>.</p>
 </div>
-<div id="discretise-any-indirect-identifiers-that-are-continuous-variables." class="section level4 hasAnchor">
+<div id="discretise-any-indirect-identifiers-that-are-continuous-variables." class="section level4 hasAnchor" number="3.4.0.7">
 <h4><span class="header-section-number">3.4.0.7</span> Discretise any indirect identifiers that are continuous variables.<a href="pseudonym.html#discretise-any-indirect-identifiers-that-are-continuous-variables." class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>None remaining (already discretised the age variables when we merged them)</p>
 </div>
-<div id="assess-re-identification-risk-criterion-i.e.-k-anonymity-using-all-indirect-identifiers." class="section level4 hasAnchor">
+<div id="assess-re-identification-risk-criterion-i.e.-k-anonymity-using-all-indirect-identifiers." class="section level4 hasAnchor" number="3.4.0.8">
 <h4><span class="header-section-number">3.4.0.8</span> Assess re-identification risk criterion (i.e. <em>k</em>-anonymity) using all indirect identifiers.<a href="pseudonym.html#assess-re-identification-risk-criterion-i.e.-k-anonymity-using-all-indirect-identifiers." class="anchor-section" aria-label="Anchor link to header"></a></h4>
-<div class="sourceCode" id="cb44"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb44-1"><a href="pseudonym.html#cb44-1"></a>vars_indirect &lt;-<span class="st"> </span><span class="kw">c</span>(</span>
-<span id="cb44-2"><a href="pseudonym.html#cb44-2"></a>  <span class="st">&quot;location&quot;</span>,</span>
-<span id="cb44-3"><a href="pseudonym.html#cb44-3"></a>  <span class="st">&quot;source_water&quot;</span>,</span>
-<span id="cb44-4"><a href="pseudonym.html#cb44-4"></a>  <span class="st">&quot;source_water_other&quot;</span>,</span>
-<span id="cb44-5"><a href="pseudonym.html#cb44-5"></a>  <span class="st">&quot;sex&quot;</span>,</span>
-<span id="cb44-6"><a href="pseudonym.html#cb44-6"></a>  <span class="st">&quot;age_group&quot;</span></span>
-<span id="cb44-7"><a href="pseudonym.html#cb44-7"></a>)</span>
-<span id="cb44-8"><a href="pseudonym.html#cb44-8"></a></span>
-<span id="cb44-9"><a href="pseudonym.html#cb44-9"></a>datadict<span class="op">::</span><span class="kw">k_anonymity</span>(dat, vars_indirect, <span class="dt">threshold =</span> <span class="dv">5</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb30"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb30-1"><a href="pseudonym.html#cb30-1" aria-hidden="true" tabindex="-1"></a>vars_indirect <span class="ot">&lt;-</span> <span class="fu">c</span>(</span>
+<span id="cb30-2"><a href="pseudonym.html#cb30-2" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;location&quot;</span>,</span>
+<span id="cb30-3"><a href="pseudonym.html#cb30-3" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;source_water&quot;</span>,</span>
+<span id="cb30-4"><a href="pseudonym.html#cb30-4" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;source_water_other&quot;</span>,</span>
+<span id="cb30-5"><a href="pseudonym.html#cb30-5" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;sex&quot;</span>,</span>
+<span id="cb30-6"><a href="pseudonym.html#cb30-6" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;age_group&quot;</span></span>
+<span id="cb30-7"><a href="pseudonym.html#cb30-7" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb30-8"><a href="pseudonym.html#cb30-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb30-9"><a href="pseudonym.html#cb30-9" aria-hidden="true" tabindex="-1"></a>datadict<span class="sc">::</span><span class="fu">k_anonymity_counts</span>(dat, vars_indirect, <span class="at">threshold =</span> <span class="dv">5</span>)</span></code></pre></div>
 <pre><code>## # A tibble: 25 × 6
-##    location source_water                             sourc…¹ sex   age_g…²     k
-##    &lt;chr&gt;    &lt;chr&gt;                                    &lt;chr&gt;   &lt;chr&gt; &lt;fct&gt;   &lt;int&gt;
-##  1 Town A   Direct from canal                        &lt;NA&gt;    Fema… 0-2         1
-##  2 Town A   Direct from canal                        &lt;NA&gt;    Male  3-14        1
-##  3 Town A   Other (specify)                          Buying… Male  3-14        1
-##  4 Town A   Other (specify)                          Buying… Male  15-29       1
-##  5 Town A   Tank filled by a truck transporting unt… &lt;NA&gt;    Fema… 3-14        1
-##  6 Town A   Tank filled by a truck transporting unt… &lt;NA&gt;    Male  0-2         1
-##  7 Town A   Tank filled by a truck transporting unt… &lt;NA&gt;    Male  30-44       1
-##  8 Town B   Direct from canal                        &lt;NA&gt;    Male  3-14        1
-##  9 Town B   Direct from canal                        &lt;NA&gt;    Male  30-44       1
-## 10 Town B   Other (specify)                          Untrea… Male  3-14        1
-## # … with 15 more rows, and abbreviated variable names ¹​source_water_other,
-## #   ²​age_group
-## # ℹ Use `print(n = ...)` to see more rows</code></pre>
+##    location source_water                source_water_other sex   age_group     k
+##    &lt;chr&gt;    &lt;chr&gt;                       &lt;chr&gt;              &lt;chr&gt; &lt;fct&gt;     &lt;int&gt;
+##  1 Town A   Direct from canal           &lt;NA&gt;               Fema… 0-2           1
+##  2 Town A   Direct from canal           &lt;NA&gt;               Male  3-14          1
+##  3 Town A   Other (specify)             Buying purified w… Male  3-14          1
+##  4 Town A   Other (specify)             Buying purified w… Male  15-29         1
+##  5 Town A   Tank filled by a truck tra… &lt;NA&gt;               Fema… 3-14          1
+##  6 Town A   Tank filled by a truck tra… &lt;NA&gt;               Male  0-2           1
+##  7 Town A   Tank filled by a truck tra… &lt;NA&gt;               Male  30-44         1
+##  8 Town B   Direct from canal           &lt;NA&gt;               Male  3-14          1
+##  9 Town B   Direct from canal           &lt;NA&gt;               Male  30-44         1
+## 10 Town B   Other (specify)             Untreated water w… Male  3-14          1
+## # ℹ 15 more rows</code></pre>
 </div>
-<div id="pseudonymize-indirect-identifiers-to-limit-re-identification-risk-e.g.-aggregate-withhold." class="section level4 hasAnchor">
+<div id="pseudonymize-indirect-identifiers-to-limit-re-identification-risk-e.g.-aggregate-withhold." class="section level4 hasAnchor" number="3.4.0.9">
 <h4><span class="header-section-number">3.4.0.9</span> Pseudonymize indirect identifiers to limit re-identification risk (e.g. aggregate, withhold).<a href="pseudonym.html#pseudonymize-indirect-identifiers-to-limit-re-identification-risk-e.g.-aggregate-withhold." class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>With the five indirect identifiers noted above, we are far from our
 <em>k</em>-anonymity threshold… there are 25 combinations with <em>k</em> &lt; 5. We’re
 particularly interested in keeping variables <code>sex</code> and <code>age_group</code>, so let’s see
 what would happen if we withheld different combinations of the other
 identifiers.</p>
-<div class="sourceCode" id="cb46"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb46-1"><a href="pseudonym.html#cb46-1"></a>datadict<span class="op">::</span><span class="kw">k_anonymity</span>(dat, <span class="kw">c</span>(<span class="st">&quot;sex&quot;</span>, <span class="st">&quot;age_group&quot;</span>), <span class="dt">threshold =</span> <span class="dv">5</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb32"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb32-1"><a href="pseudonym.html#cb32-1" aria-hidden="true" tabindex="-1"></a>datadict<span class="sc">::</span><span class="fu">k_anonymity_counts</span>(dat, <span class="fu">c</span>(<span class="st">&quot;sex&quot;</span>, <span class="st">&quot;age_group&quot;</span>), <span class="at">threshold =</span> <span class="dv">5</span>)</span></code></pre></div>
 <pre><code>## # A tibble: 0 × 3
-## # … with 3 variables: sex &lt;chr&gt;, age_group &lt;fct&gt;, k &lt;int&gt;
-## # ℹ Use `colnames()` to see all variable names</code></pre>
-<div class="sourceCode" id="cb48"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb48-1"><a href="pseudonym.html#cb48-1"></a>datadict<span class="op">::</span><span class="kw">k_anonymity</span>(dat, <span class="kw">c</span>(<span class="st">&quot;sex&quot;</span>, <span class="st">&quot;age_group&quot;</span>, <span class="st">&quot;location&quot;</span>), <span class="dt">threshold =</span> <span class="dv">5</span>)</span></code></pre></div>
+## # ℹ 3 variables: sex &lt;chr&gt;, age_group &lt;fct&gt;, k &lt;int&gt;</code></pre>
+<div class="sourceCode" id="cb34"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb34-1"><a href="pseudonym.html#cb34-1" aria-hidden="true" tabindex="-1"></a>datadict<span class="sc">::</span><span class="fu">k_anonymity_counts</span>(dat, <span class="fu">c</span>(<span class="st">&quot;sex&quot;</span>, <span class="st">&quot;age_group&quot;</span>, <span class="st">&quot;location&quot;</span>), <span class="at">threshold =</span> <span class="dv">5</span>)</span></code></pre></div>
 <pre><code>## # A tibble: 0 × 4
-## # … with 4 variables: sex &lt;chr&gt;, age_group &lt;fct&gt;, location &lt;chr&gt;, k &lt;int&gt;
-## # ℹ Use `colnames()` to see all variable names</code></pre>
-<div class="sourceCode" id="cb50"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb50-1"><a href="pseudonym.html#cb50-1"></a>datadict<span class="op">::</span><span class="kw">k_anonymity</span>(dat, <span class="kw">c</span>(<span class="st">&quot;sex&quot;</span>, <span class="st">&quot;age_group&quot;</span>, <span class="st">&quot;source_water&quot;</span>), <span class="dt">threshold =</span> <span class="dv">5</span>)</span></code></pre></div>
+## # ℹ 4 variables: sex &lt;chr&gt;, age_group &lt;fct&gt;, location &lt;chr&gt;, k &lt;int&gt;</code></pre>
+<div class="sourceCode" id="cb36"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb36-1"><a href="pseudonym.html#cb36-1" aria-hidden="true" tabindex="-1"></a>datadict<span class="sc">::</span><span class="fu">k_anonymity_counts</span>(dat, <span class="fu">c</span>(<span class="st">&quot;sex&quot;</span>, <span class="st">&quot;age_group&quot;</span>, <span class="st">&quot;source_water&quot;</span>), <span class="at">threshold =</span> <span class="dv">5</span>)</span></code></pre></div>
 <pre><code>## # A tibble: 12 × 4
 ##    sex    age_group source_water                                            k
 ##    &lt;chr&gt;  &lt;fct&gt;     &lt;chr&gt;                                               &lt;int&gt;
@@ -556,8 +556,8 @@ identifiers.</p>
 ## 12 Male   15-29     Tank filled by a truck transporting untreated water     4</code></pre>
 <p>The variables <code>source_water</code> and <code>source_water_other</code> could potentially be
 aggregated into categories like “Treated water” and “Untreated water”.</p>
-<div class="sourceCode" id="cb52"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb52-1"><a href="pseudonym.html#cb52-1"></a>dat <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb52-2"><a href="pseudonym.html#cb52-2"></a><span class="st">  </span><span class="kw">count</span>(source_water, source_water_other)</span></code></pre></div>
+<div class="sourceCode" id="cb38"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb38-1"><a href="pseudonym.html#cb38-1" aria-hidden="true" tabindex="-1"></a>dat <span class="sc">%&gt;%</span> </span>
+<span id="cb38-2"><a href="pseudonym.html#cb38-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(source_water, source_water_other)</span></code></pre></div>
 <pre><code>## # A tibble: 5 × 3
 ##   source_water                                        source_water_other       n
 ##   &lt;chr&gt;                                               &lt;chr&gt;                &lt;int&gt;
@@ -566,17 +566,17 @@ aggregated into categories like “Treated water” and “Untreated water”.</
 ## 3 Other (specify)                                     Buying purified wat…     2
 ## 4 Other (specify)                                     Untreated water wel…     2
 ## 5 Tank filled by a truck transporting untreated water &lt;NA&gt;                    48</code></pre>
-<div class="sourceCode" id="cb54"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb54-1"><a href="pseudonym.html#cb54-1"></a>dat &lt;-<span class="st"> </span>dat <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb54-2"><a href="pseudonym.html#cb54-2"></a><span class="st">  </span><span class="kw">mutate</span>(</span>
-<span id="cb54-3"><a href="pseudonym.html#cb54-3"></a>    <span class="dt">water_source_agg =</span> <span class="kw">case_when</span>(</span>
-<span id="cb54-4"><a href="pseudonym.html#cb54-4"></a>      source_water <span class="op">==</span><span class="st"> &quot;City water network piped to household&quot;</span> <span class="op">~</span><span class="st"> &quot;Source treated&quot;</span>,</span>
-<span id="cb54-5"><a href="pseudonym.html#cb54-5"></a>      source_water_other <span class="op">==</span><span class="st"> &quot;Buying purified water&quot;</span> <span class="op">~</span><span class="st"> &quot;Source treated&quot;</span>,</span>
-<span id="cb54-6"><a href="pseudonym.html#cb54-6"></a>      <span class="op">!</span><span class="kw">is.na</span>(source_water) <span class="op">~</span><span class="st"> &quot;Source untreated&quot;</span>,</span>
-<span id="cb54-7"><a href="pseudonym.html#cb54-7"></a>      <span class="ot">TRUE</span> <span class="op">~</span><span class="st"> </span><span class="ot">NA_character_</span></span>
-<span id="cb54-8"><a href="pseudonym.html#cb54-8"></a>    )</span>
-<span id="cb54-9"><a href="pseudonym.html#cb54-9"></a>  )</span>
-<span id="cb54-10"><a href="pseudonym.html#cb54-10"></a></span>
-<span id="cb54-11"><a href="pseudonym.html#cb54-11"></a>datadict<span class="op">::</span><span class="kw">k_anonymity</span>(dat, <span class="kw">c</span>(<span class="st">&quot;sex&quot;</span>, <span class="st">&quot;age_group&quot;</span>, <span class="st">&quot;water_source_agg&quot;</span>), <span class="dt">threshold =</span> <span class="dv">5</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb40"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb40-1"><a href="pseudonym.html#cb40-1" aria-hidden="true" tabindex="-1"></a>dat <span class="ot">&lt;-</span> dat <span class="sc">%&gt;%</span> </span>
+<span id="cb40-2"><a href="pseudonym.html#cb40-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(</span>
+<span id="cb40-3"><a href="pseudonym.html#cb40-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">water_source_agg =</span> <span class="fu">case_when</span>(</span>
+<span id="cb40-4"><a href="pseudonym.html#cb40-4" aria-hidden="true" tabindex="-1"></a>      source_water <span class="sc">==</span> <span class="st">&quot;City water network piped to household&quot;</span> <span class="sc">~</span> <span class="st">&quot;Source treated&quot;</span>,</span>
+<span id="cb40-5"><a href="pseudonym.html#cb40-5" aria-hidden="true" tabindex="-1"></a>      source_water_other <span class="sc">==</span> <span class="st">&quot;Buying purified water&quot;</span> <span class="sc">~</span> <span class="st">&quot;Source treated&quot;</span>,</span>
+<span id="cb40-6"><a href="pseudonym.html#cb40-6" aria-hidden="true" tabindex="-1"></a>      <span class="sc">!</span><span class="fu">is.na</span>(source_water) <span class="sc">~</span> <span class="st">&quot;Source untreated&quot;</span>,</span>
+<span id="cb40-7"><a href="pseudonym.html#cb40-7" aria-hidden="true" tabindex="-1"></a>      <span class="cn">TRUE</span> <span class="sc">~</span> <span class="cn">NA_character_</span></span>
+<span id="cb40-8"><a href="pseudonym.html#cb40-8" aria-hidden="true" tabindex="-1"></a>    )</span>
+<span id="cb40-9"><a href="pseudonym.html#cb40-9" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb40-10"><a href="pseudonym.html#cb40-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb40-11"><a href="pseudonym.html#cb40-11" aria-hidden="true" tabindex="-1"></a>datadict<span class="sc">::</span><span class="fu">k_anonymity_counts</span>(dat, <span class="fu">c</span>(<span class="st">&quot;sex&quot;</span>, <span class="st">&quot;age_group&quot;</span>, <span class="st">&quot;water_source_agg&quot;</span>), <span class="at">threshold =</span> <span class="dv">5</span>)</span></code></pre></div>
 <pre><code>## # A tibble: 4 × 4
 ##   sex    age_group water_source_agg     k
 ##   &lt;chr&gt;  &lt;fct&gt;     &lt;chr&gt;            &lt;int&gt;
@@ -585,90 +585,60 @@ aggregated into categories like “Treated water” and “Untreated water”.</
 ## 3 Male   30-44     Source untreated     3
 ## 4 Male   45+       Source untreated     3</code></pre>
 </div>
-<div id="repeat-steps-8-and-9-until-the-given-risk-criterion-is-met." class="section level4 hasAnchor">
+<div id="repeat-steps-8-and-9-until-the-given-risk-criterion-is-met." class="section level4 hasAnchor" number="3.4.0.10">
 <h4><span class="header-section-number">3.4.0.10</span> Repeat steps 8 and 9 until the given risk criterion is met.<a href="pseudonym.html#repeat-steps-8-and-9-until-the-given-risk-criterion-is-met." class="anchor-section" aria-label="Anchor link to header"></a></h4>
 <p>Even after aggregating the water source variables, we still do not meet our
 <em>k</em>-anonymity threshold if we also include <code>sex</code> and <code>age_group</code>. We therefore
 elect to withhold the water source variables.</p>
-<div class="sourceCode" id="cb56"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb56-1"><a href="pseudonym.html#cb56-1"></a>dat<span class="op">$</span>water_source_agg &lt;-<span class="st"> </span><span class="ot">NULL</span> <span class="co"># we can remove this one outright</span></span>
-<span id="cb56-2"><a href="pseudonym.html#cb56-2"></a>dat<span class="op">$</span>source_water &lt;-<span class="st"> </span><span class="ot">NA_character_</span></span>
-<span id="cb56-3"><a href="pseudonym.html#cb56-3"></a>dat<span class="op">$</span>source_water_other &lt;-<span class="st"> </span><span class="ot">NA_character_</span></span>
-<span id="cb56-4"><a href="pseudonym.html#cb56-4"></a></span>
-<span id="cb56-5"><a href="pseudonym.html#cb56-5"></a>vars_withhold &lt;-<span class="st"> </span><span class="kw">c</span>(</span>
-<span id="cb56-6"><a href="pseudonym.html#cb56-6"></a>  <span class="st">&quot;source_water&quot;</span>,</span>
-<span id="cb56-7"><a href="pseudonym.html#cb56-7"></a>  <span class="st">&quot;source_water_other&quot;</span></span>
-<span id="cb56-8"><a href="pseudonym.html#cb56-8"></a>)</span>
-<span id="cb56-9"><a href="pseudonym.html#cb56-9"></a></span>
-<span id="cb56-10"><a href="pseudonym.html#cb56-10"></a>dict<span class="op">$</span>status[dict<span class="op">$</span>variable_name <span class="op">%in%</span><span class="st"> </span>vars_withhold] &lt;-<span class="st"> &quot;withheld&quot;</span></span></code></pre></div>
+<div class="sourceCode" id="cb42"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb42-1"><a href="pseudonym.html#cb42-1" aria-hidden="true" tabindex="-1"></a>dat<span class="sc">$</span>water_source_agg <span class="ot">&lt;-</span> <span class="cn">NULL</span> <span class="co"># we can remove this one outright</span></span>
+<span id="cb42-2"><a href="pseudonym.html#cb42-2" aria-hidden="true" tabindex="-1"></a>dat<span class="sc">$</span>source_water <span class="ot">&lt;-</span> <span class="cn">NA_character_</span></span>
+<span id="cb42-3"><a href="pseudonym.html#cb42-3" aria-hidden="true" tabindex="-1"></a>dat<span class="sc">$</span>source_water_other <span class="ot">&lt;-</span> <span class="cn">NA_character_</span></span>
+<span id="cb42-4"><a href="pseudonym.html#cb42-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb42-5"><a href="pseudonym.html#cb42-5" aria-hidden="true" tabindex="-1"></a>vars_withhold <span class="ot">&lt;-</span> <span class="fu">c</span>(</span>
+<span id="cb42-6"><a href="pseudonym.html#cb42-6" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;source_water&quot;</span>,</span>
+<span id="cb42-7"><a href="pseudonym.html#cb42-7" aria-hidden="true" tabindex="-1"></a>  <span class="st">&quot;source_water_other&quot;</span></span>
+<span id="cb42-8"><a href="pseudonym.html#cb42-8" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb42-9"><a href="pseudonym.html#cb42-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb42-10"><a href="pseudonym.html#cb42-10" aria-hidden="true" tabindex="-1"></a>dict<span class="sc">$</span>status[dict<span class="sc">$</span>variable_name <span class="sc">%in%</span> vars_withhold] <span class="ot">&lt;-</span> <span class="st">&quot;withheld&quot;</span></span></code></pre></div>
 </div>
-<div id="ensure-that-the-final-pseudonymized-dataset-and-dictionary-meet-all-data-sharing-requirements." class="section level4 hasAnchor">
+<div id="ensure-that-the-final-pseudonymized-dataset-and-dictionary-meet-all-data-sharing-requirements." class="section level4 hasAnchor" number="3.4.0.11">
 <h4><span class="header-section-number">3.4.0.11</span> Ensure that the final pseudonymized dataset and dictionary meet all data-sharing requirements.<a href="pseudonym.html#ensure-that-the-final-pseudonymized-dataset-and-dictionary-meet-all-data-sharing-requirements." class="anchor-section" aria-label="Anchor link to header"></a></h4>
-<div class="sourceCode" id="cb57"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb57-1"><a href="pseudonym.html#cb57-1"></a><span class="co"># check dictionary valid</span></span>
-<span id="cb57-2"><a href="pseudonym.html#cb57-2"></a>datadict<span class="op">::</span><span class="kw">valid_dict</span>(dict)</span></code></pre></div>
+<div class="sourceCode" id="cb43"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb43-1"><a href="pseudonym.html#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="co"># check dictionary valid</span></span>
+<span id="cb43-2"><a href="pseudonym.html#cb43-2" aria-hidden="true" tabindex="-1"></a>datadict<span class="sc">::</span><span class="fu">valid_dict</span>(dict)</span></code></pre></div>
 <pre><code>## [1] TRUE</code></pre>
-<div class="sourceCode" id="cb59"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb59-1"><a href="pseudonym.html#cb59-1"></a><span class="co"># check dataset corresponds with dictionary</span></span>
-<span id="cb59-2"><a href="pseudonym.html#cb59-2"></a>datadict<span class="op">::</span><span class="kw">valid_data</span>(dat, dict)</span></code></pre></div>
-<pre><code>## Checking for columns marked &#39;withheld&#39; that contain non-missing values:
-##     OK</code></pre>
-<pre><code>## Checking for columns present in `data` but not defined in `dict`:
-##     c(&quot;id&quot;)</code></pre>
-<pre><code>## Checking for columns defined in `dict` but not present in `data`:
-##     OK</code></pre>
-<pre><code>## Checking for problems with variables of type &#39;Numeric&#39;:
-##     OK</code></pre>
-<pre><code>## Checking for problems with variables of type &#39;Date&#39;:
-##     OK</code></pre>
-<pre><code>## Checking for problems with variables of type &#39;Time&#39;:
-##     OK</code></pre>
-<pre><code>## Checking for problems with variables of type &#39;Datetime&#39;:
-##     OK</code></pre>
-<pre><code>## Checking for problems with variables of type &#39;Coded list&#39;:
-##     OK</code></pre>
+<div class="sourceCode" id="cb45"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb45-1"><a href="pseudonym.html#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="co"># check dataset corresponds with dictionary</span></span>
+<span id="cb45-2"><a href="pseudonym.html#cb45-2" aria-hidden="true" tabindex="-1"></a>datadict<span class="sc">::</span><span class="fu">valid_data</span>(dat, dict)</span></code></pre></div>
+<pre><code>## Warning: - Columns present in `data` but not defined in `dict`: &quot;id&quot;</code></pre>
+<pre><code>## [1] FALSE</code></pre>
 <p>The variable <code>id</code> seems to be missing from the dictionary, so we’ll have to
 create a manual entry.</p>
-<div class="sourceCode" id="cb68"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb68-1"><a href="pseudonym.html#cb68-1"></a>dict &lt;-<span class="st"> </span>dict <span class="op">%&gt;%</span><span class="st"> </span></span>
-<span id="cb68-2"><a href="pseudonym.html#cb68-2"></a><span class="st">  </span><span class="kw">add_row</span>(</span>
-<span id="cb68-3"><a href="pseudonym.html#cb68-3"></a>    <span class="dt">variable_name =</span> <span class="st">&quot;id&quot;</span>,</span>
-<span id="cb68-4"><a href="pseudonym.html#cb68-4"></a>    <span class="dt">short_label =</span> <span class="st">&quot;Participant ID&quot;</span>,</span>
-<span id="cb68-5"><a href="pseudonym.html#cb68-5"></a>    <span class="dt">type =</span> <span class="st">&quot;Free text&quot;</span>,</span>
-<span id="cb68-6"><a href="pseudonym.html#cb68-6"></a>    <span class="dt">choices =</span> <span class="ot">NA_character_</span>,</span>
-<span id="cb68-7"><a href="pseudonym.html#cb68-7"></a>    <span class="dt">origin =</span> <span class="st">&quot;original&quot;</span>,</span>
-<span id="cb68-8"><a href="pseudonym.html#cb68-8"></a>    <span class="dt">status =</span> <span class="st">&quot;shared&quot;</span>,</span>
-<span id="cb68-9"><a href="pseudonym.html#cb68-9"></a>    <span class="dt">.before =</span> <span class="dv">1</span></span>
-<span id="cb68-10"><a href="pseudonym.html#cb68-10"></a>  )</span></code></pre></div>
+<div class="sourceCode" id="cb48"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb48-1"><a href="pseudonym.html#cb48-1" aria-hidden="true" tabindex="-1"></a>dict <span class="ot">&lt;-</span> dict <span class="sc">%&gt;%</span> </span>
+<span id="cb48-2"><a href="pseudonym.html#cb48-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">add_row</span>(</span>
+<span id="cb48-3"><a href="pseudonym.html#cb48-3" aria-hidden="true" tabindex="-1"></a>    <span class="at">variable_name =</span> <span class="st">&quot;id&quot;</span>,</span>
+<span id="cb48-4"><a href="pseudonym.html#cb48-4" aria-hidden="true" tabindex="-1"></a>    <span class="at">short_label =</span> <span class="st">&quot;Participant ID&quot;</span>,</span>
+<span id="cb48-5"><a href="pseudonym.html#cb48-5" aria-hidden="true" tabindex="-1"></a>    <span class="at">type =</span> <span class="st">&quot;Free text&quot;</span>,</span>
+<span id="cb48-6"><a href="pseudonym.html#cb48-6" aria-hidden="true" tabindex="-1"></a>    <span class="at">choices =</span> <span class="cn">NA_character_</span>,</span>
+<span id="cb48-7"><a href="pseudonym.html#cb48-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">origin =</span> <span class="st">&quot;original&quot;</span>,</span>
+<span id="cb48-8"><a href="pseudonym.html#cb48-8" aria-hidden="true" tabindex="-1"></a>    <span class="at">status =</span> <span class="st">&quot;shared&quot;</span>,</span>
+<span id="cb48-9"><a href="pseudonym.html#cb48-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">.before =</span> <span class="dv">1</span></span>
+<span id="cb48-10"><a href="pseudonym.html#cb48-10" aria-hidden="true" tabindex="-1"></a>  )</span></code></pre></div>
 <p>We’ll run the checks one final time, including a final check of our
 <em>k</em>-anonymity threshold.</p>
-<div class="sourceCode" id="cb69"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb69-1"><a href="pseudonym.html#cb69-1"></a><span class="co"># check dictionary valid</span></span>
-<span id="cb69-2"><a href="pseudonym.html#cb69-2"></a>datadict<span class="op">::</span><span class="kw">valid_dict</span>(dict)</span></code></pre></div>
+<div class="sourceCode" id="cb49"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb49-1"><a href="pseudonym.html#cb49-1" aria-hidden="true" tabindex="-1"></a><span class="co"># check dictionary valid</span></span>
+<span id="cb49-2"><a href="pseudonym.html#cb49-2" aria-hidden="true" tabindex="-1"></a>datadict<span class="sc">::</span><span class="fu">valid_dict</span>(dict)</span></code></pre></div>
 <pre><code>## [1] TRUE</code></pre>
-<div class="sourceCode" id="cb71"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb71-1"><a href="pseudonym.html#cb71-1"></a><span class="co"># check dataset corresponds with dictionary</span></span>
-<span id="cb71-2"><a href="pseudonym.html#cb71-2"></a>datadict<span class="op">::</span><span class="kw">valid_data</span>(dat, dict)</span></code></pre></div>
-<pre><code>## Checking for columns marked &#39;withheld&#39; that contain non-missing values:
-##     OK</code></pre>
-<pre><code>## Checking for columns present in `data` but not defined in `dict`:
-##     OK</code></pre>
-<pre><code>## Checking for columns defined in `dict` but not present in `data`:
-##     OK</code></pre>
-<pre><code>## Checking for problems with variables of type &#39;Numeric&#39;:
-##     OK</code></pre>
-<pre><code>## Checking for problems with variables of type &#39;Date&#39;:
-##     OK</code></pre>
-<pre><code>## Checking for problems with variables of type &#39;Time&#39;:
-##     OK</code></pre>
-<pre><code>## Checking for problems with variables of type &#39;Datetime&#39;:
-##     OK</code></pre>
-<pre><code>## Checking for problems with variables of type &#39;Coded list&#39;:
-##     OK</code></pre>
-<div class="sourceCode" id="cb80"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb80-1"><a href="pseudonym.html#cb80-1"></a><span class="co"># check k-anonymity</span></span>
-<span id="cb80-2"><a href="pseudonym.html#cb80-2"></a>datadict<span class="op">::</span><span class="kw">k_anonymity</span>(dat, <span class="kw">c</span>(<span class="st">&quot;sex&quot;</span>, <span class="st">&quot;age_group&quot;</span>, <span class="st">&quot;location&quot;</span>), <span class="dt">threshold =</span> <span class="dv">5</span>)</span></code></pre></div>
+<div class="sourceCode" id="cb51"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb51-1"><a href="pseudonym.html#cb51-1" aria-hidden="true" tabindex="-1"></a><span class="co"># check dataset corresponds with dictionary</span></span>
+<span id="cb51-2"><a href="pseudonym.html#cb51-2" aria-hidden="true" tabindex="-1"></a>datadict<span class="sc">::</span><span class="fu">valid_data</span>(dat, dict)</span></code></pre></div>
+<pre><code>## [1] TRUE</code></pre>
+<div class="sourceCode" id="cb53"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb53-1"><a href="pseudonym.html#cb53-1" aria-hidden="true" tabindex="-1"></a><span class="co"># check k-anonymity</span></span>
+<span id="cb53-2"><a href="pseudonym.html#cb53-2" aria-hidden="true" tabindex="-1"></a>datadict<span class="sc">::</span><span class="fu">k_anonymity_counts</span>(dat, <span class="fu">c</span>(<span class="st">&quot;sex&quot;</span>, <span class="st">&quot;age_group&quot;</span>, <span class="st">&quot;location&quot;</span>), <span class="at">threshold =</span> <span class="dv">5</span>)</span></code></pre></div>
 <pre><code>## # A tibble: 0 × 4
-## # … with 4 variables: sex &lt;chr&gt;, age_group &lt;fct&gt;, location &lt;chr&gt;, k &lt;int&gt;
-## # ℹ Use `colnames()` to see all variable names</code></pre>
+## # ℹ 4 variables: sex &lt;chr&gt;, age_group &lt;fct&gt;, location &lt;chr&gt;, k &lt;int&gt;</code></pre>
 <p>Finally, we’ll write the final, pseudonymized dataset and data dictionary for
 sharing.</p>
-<div class="sourceCode" id="cb82"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb82-1"><a href="pseudonym.html#cb82-1"></a><span class="cf">if</span> (<span class="op">!</span><span class="kw">dir.exists</span>(<span class="kw">here</span>(<span class="st">&quot;output&quot;</span>))) <span class="kw">dir.create</span>(<span class="kw">here</span>(<span class="st">&quot;output&quot;</span>))</span>
-<span id="cb82-2"><a href="pseudonym.html#cb82-2"></a>rio<span class="op">::</span><span class="kw">export</span>(dat, <span class="dt">file =</span> <span class="kw">here</span>(<span class="st">&quot;output/data_share.xlsx&quot;</span>))</span>
-<span id="cb82-3"><a href="pseudonym.html#cb82-3"></a>rio<span class="op">::</span><span class="kw">export</span>(dict, <span class="dt">file =</span> <span class="kw">here</span>(<span class="st">&quot;output/dict_share.xlsx&quot;</span>))</span></code></pre></div>
+<div class="sourceCode" id="cb55"><pre class="sourceCode r"><code class="sourceCode r"><span id="cb55-1"><a href="pseudonym.html#cb55-1" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="sc">!</span><span class="fu">dir.exists</span>(<span class="fu">here</span>(<span class="st">&quot;output&quot;</span>))) <span class="fu">dir.create</span>(<span class="fu">here</span>(<span class="st">&quot;output&quot;</span>))</span>
+<span id="cb55-2"><a href="pseudonym.html#cb55-2" aria-hidden="true" tabindex="-1"></a>rio<span class="sc">::</span><span class="fu">export</span>(dat, <span class="at">file =</span> <span class="fu">here</span>(<span class="st">&quot;output/data_share.xlsx&quot;</span>))</span>
+<span id="cb55-3"><a href="pseudonym.html#cb55-3" aria-hidden="true" tabindex="-1"></a>rio<span class="sc">::</span><span class="fu">export</span>(dict, <span class="at">file =</span> <span class="fu">here</span>(<span class="st">&quot;output/dict_share.xlsx&quot;</span>))</span></code></pre></div>
 </details>
 
 </div>
