@@ -396,7 +396,7 @@
       "RemoteRepo": "datadict",
       "RemoteUsername": "epicentre-msf",
       "RemoteRef": "HEAD",
-      "RemoteSha": "40df83fab398919704762bbff1cf451ac5c4fe3b",
+      "RemoteSha": "3f4d02e038add5c95ffddb75e9e44dbcdfd6596c",
       "Requirements": [
         "R",
         "chron",
@@ -411,7 +411,7 @@
         "stringr",
         "tidyr"
       ],
-      "Hash": "7b26b31fed2627d294de216ce3c3753d"
+      "Hash": "cd0708bc62dccb989366126c6c99329f"
     },
     "dbc": {
       "Package": "dbc",
