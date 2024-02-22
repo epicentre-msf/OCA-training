@@ -320,7 +320,7 @@ vars_indirect <- c(
   "age_group"
 )
 
-datadict::k_anonymity(dat, vars_indirect, threshold = 5)
+datadict::k_anonymity_counts(dat, vars_indirect, threshold = 5)
 ```
 
 #### Pseudonymize indirect identifiers to limit re-identification risk (e.g. aggregate, withhold).
@@ -332,9 +332,9 @@ what would happen if we withheld different combinations of the other
 identifiers.
 
 ```{r}
-datadict::k_anonymity(dat, c("sex", "age_group"), threshold = 5)
-datadict::k_anonymity(dat, c("sex", "age_group", "location"), threshold = 5)
-datadict::k_anonymity(dat, c("sex", "age_group", "source_water"), threshold = 5)
+datadict::k_anonymity_counts(dat, c("sex", "age_group"), threshold = 5)
+datadict::k_anonymity_counts(dat, c("sex", "age_group", "location"), threshold = 5)
+datadict::k_anonymity_counts(dat, c("sex", "age_group", "source_water"), threshold = 5)
 ```
 
 The variables `source_water` and `source_water_other` could potentially be
@@ -354,7 +354,7 @@ dat <- dat %>%
     )
   )
 
-datadict::k_anonymity(dat, c("sex", "age_group", "water_source_agg"), threshold = 5)
+datadict::k_anonymity_counts(dat, c("sex", "age_group", "water_source_agg"), threshold = 5)
 ```
 
 #### Repeat steps 8 and 9 until the given risk criterion is met.
@@ -414,7 +414,7 @@ datadict::valid_dict(dict)
 datadict::valid_data(dat, dict)
 
 # check k-anonymity
-datadict::k_anonymity(dat, c("sex", "age_group", "location"), threshold = 5)
+datadict::k_anonymity_counts(dat, c("sex", "age_group", "location"), threshold = 5)
 ```
 
 Finally, we'll write the final, pseudonymized dataset and data dictionary for
