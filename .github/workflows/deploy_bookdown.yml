@@ -1,58 +1,48 @@
-# From:
-# https://orchid00.github.io/actions_sandbox/websites-using-pkgdown-bookdown-and-blogdown.html#deploy-bookdown
+# Workflow derived from https://github.com/r-lib/actions/tree/v2/examples
+# Need help debugging build failures? Start at https://github.com/r-lib/actions#where-to-find-help
 on:
   push:
-     branches:
-       - main
+    branches: [main, master]
+  pull_request:
+    branches: [main, master]
+  workflow_dispatch:
 
-name: renderbook
+name: bookdown
 
 jobs:
   bookdown:
-    name: Render-Book
-    runs-on: macOS-latest
+    runs-on: ubuntu-latest
+    # Only restrict concurrency for non-PR jobs
+    concurrency:
+      group: pkgdown-${{ github.event_name != 'pull_request' || github.run_id }}
     env:
       GITHUB_PAT: ${{ secrets.GITHUB_TOKEN }}
     steps:
-      - uses: actions/checkout@v1
-      - uses: r-lib/actions/setup-r@v1
-      - uses: r-lib/actions/setup-pandoc@v1
-      - name: Install rmarkdown
-        run: Rscript -e 'install.packages(c("rmarkdown","bookdown"))'
-      - name: Install dependancies
-        run: Rscript -e 'install.packages(c("rio", "here", "dplyr", "remotes"))'
-      - name: Install remote dependancies
-        run: Rscript -e 'remotes::install_github("epicentre-msf/datadict")'
-      - name: Render Book
-        run: Rscript -e 'bookdown::render_book("index.Rmd")'
-      - uses: actions/upload-artifact@v1
+      - uses: actions/checkout@v4
+
+      - uses: r-lib/actions/setup-pandoc@v2
+
+      - uses: r-lib/actions/setup-r@v2
         with:
-          name: _book
-          path: _book/
-  
-# Need to first create an empty gh-pages branch
-# see https://pkgdown.r-lib.org/reference/deploy_site_github.html
-# and also add secrets for a GH_PAT and EMAIL to the repository
-# gh-action from Cecilapp/GitHub-Pages-deploy
-  checkout-and-deploy:
-   runs-on: ubuntu-latest
-   needs: bookdown
-   steps:
-     - name: Checkout
-       uses: actions/checkout@master
-     - name: Download artifact
-       uses: actions/download-artifact@v1.0.0
-       with:
-         # Artifact name
-         name: _book   # optional
-         # Destination path
-         path: _book   # optional
-     - name: Deploy to GitHub Pages
-       uses: Cecilapp/GitHub-Pages-deploy@v3
-       env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-       with:
-          build_dir: _book/ # "_site/" by default
-          email: ${{ secrets.EMAIL }}  # must be a verified email
-  
+          use-public-rspm: true
+
+      - uses: r-lib/actions/setup-renv@v2
+
+      - name: Cache bookdown results
+        uses: actions/cache@v4
+        with:
+          path: _bookdown_files
+          key: bookdown-${{ hashFiles('**/*Rmd') }}
+          restore-keys: bookdown-
+
+      - name: Build site
+        run: bookdown::render_book("index.Rmd", quiet = TRUE)
+        shell: Rscript {0}
+
+      - name: Deploy to GitHub pages 🚀
+        if: github.event_name != 'pull_request'
+        uses: JamesIves/github-pages-deploy-action@v4.5.0
+        with:
+          branch: gh-pages
+          folder: _book
   
